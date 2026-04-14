@@ -38,13 +38,14 @@
       <h1>Hi,I'm Lucky Ubadiillah</h1>
       <h3>Developer | Designer</h3>
       <p>
-        Saya seorang web developer yang senang belajar tentang desain web dan pemrograman.
+        Saya adalah seorang Mahasiswa SMK Skill Village Islamic School dengan juruan Pengembangan Perangkat 
+        Lunak dan Gim (PPLG).
         Portfolio ini saya buat untuk memperlihatkan hasil karya dan perjalanan belajar saya.
       </p>
       <a href="#about" class="btn">Selengkapnya →</a>
     </div>
     <div class="hero-image">
-      <img src="lucky.jpeg" alt="Foto Lucky">
+      <img src="image/lucky.jpeg" alt="Foto Lucky">
     </div>
   </section>
 
@@ -109,52 +110,347 @@
 
 <section class="design-section" id="Collection">
   <div class="design-container">
-    <!-- projek sebelah kiri -->
-    <div class="design-projects">
-      <div class="project-card">
-        <img src="PosterKonser.jpg" alt="Design 1">
-        <p>- Design Project -</p>
-      </div>
-      <div class="project-card">
-        <img src="Hamburger.png" alt="Design 2">
-        <p>- Design Project -</p>
-      </div>
-    </div> 
 
-    <!-- deskripsi sebelah kanan -->
+    <!-- GAMBAR KIRI — tambah .project-card sebanyak apapun -->
+    <div class="design-projects">
+
+      <div class="project-card">
+        <div class="img-wrapper">
+          <img src="image/Design-PosterKonser.jpg" alt="Design 1">
+        </div>
+        <p class="card-label">— Design Canva —</p>
+      </div>
+
+      <div class="project-card">
+        <div class="img-wrapper">
+          <img src="image/Design-Hamburger.png" alt="Design 2">
+        </div>
+        <p class="card-label">— Design Canva —</p>
+      </div>
+
+      <!-- Gambar ke-3, ke-4, dst — tinggal copy blok ini -->
+      <div class="project-card">
+        <div class="img-wrapper">
+          <img src="image/Design-InnerCup.png" alt="Design 3">
+        </div>
+        <p class="card-label">— Design Canva —</p>
+      </div>
+      <div class="project-card">
+        <div class="img-wrapper">
+          <img src="image/Design UI UX-Etiket.png" alt="Design 3">
+        </div>
+        <p class="card-label">— Design Project Figma —</p>
+      </div>
+
+    </div>
+
+    <!-- TEKS KANAN -->
     <div class="design-text">
       <h3>Gallery Design</h3>
-      <h2>Some of <br> My Design <br> Results</h2>
-      <p>Beberapa hasil desain <br>  ku, selama kurang lebih <br> belajar desain grafis <br> di Skill Village </p>
-      <a href="https://www.instagram.com/onlyluxky/?hl=en" class="see-all">See All</a>
+      <h2>Some of <br><em>My Design</em><br>Results</h2>
+      <p>Beberapa hasil desain ku, selama kurang lebih belajar desain grafis di Skill Village.</p>
+      <a href="https://drive.google.com/drive/folders/1Li-Azlsw5jpEWD7cZ55XPmdrEwMzVZn1?usp=sharing" class="see-all">
+        <span>See All</span>
+        <span class="arrow">→</span>
+      </a>
       <div class="signature">
-        <img src="logo-lu.jpeg" alt="Logo">
-        <span>by: Lucky Ubadiillah</span>
+        <img src="image/logo-lu.jpeg" alt="Logo">
+        <div class="sig-info">
+          <small>Designed by</small>
+          <strong>Lucky Ubadiillah</strong>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- New Coding Projects Section -->
 <section id="projects" class="projects-section">
   <div class="projects-container">
-    <h2>My Coding Projects</h2>
-    <p>Berikut adalah proyek coding yang telah saya selesaikan selama proses belajar sebagai web developer, dikembangkan menggunakan Laravel, Filament, MySQL, serta didukung oleh Laragon dan Visual Studio Code.</p>
-    
+    <p class="section-label">Portfolio</p>
+    <h2>My Projects</h2>
+    <p>Berikut adalah projek yang telah saya selesaikan selama proses belajar sebagai Mahasiswa Pengembangan Perangkat Lunak dan Gim (PPLG).</p>
+
     <div class="projects-grid">
       <div class="project-card">
-        <h3>POS (Poin Of Sales)</h3>
-        <p>Sebuah aplikasi Point of Sale (POS) berbasis web yang dikembangkan menggunakan Laravel sebagai framework backend dan Filament sebagai admin panel. Proyek ini dibuat dan dijalankan menggunakan Laragon sebagai web server lokal, serta Visual Studio Code sebagai code editor. Aplikasi ini membantu proses transaksi penjualan dengan pengelolaan data produk, perhitungan total pembayaran secara otomatis, dan manajemen transaksi agar lebih cepat, akurat, dan efisien.</p>
-        <ul>
-          <li><strong>Technologies:</strong> Laravel, Filament, PHP, MySQL, HTML, CSS, JavaScript, Laragon, Visual Studio Code</li>
-          <li><strong>Features:</strong> Produk, Transaksi, Stok, Pembayaran, Riwayat, User & Role, Laporan, Dashboard</li>
-        </ul>
-        <a href="https://github.com/zynly/pos-app" target="_blank" class="btn">View Code</a>
-        <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="btn">Live Demo</a>
+
+        <!-- ===== PREVIEW AREA ===== -->
+        <div class="project-preview">
+          <!-- 
+            GANTI src di bawah dengan screenshot proyekmu.
+            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
+            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
+          -->
+          <img src="image/webPorto.png" alt="Preview POS App"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          
+          <!-- Fallback placeholder jika gambar belum ada -->
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
+                      width:100%; height:100%; gap:8px; padding-top:28px;">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
+              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
+            </svg>
+            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
+          </div>
+
+          <div class="browser-bar">
+            <span class="browser-dot dot-red"></span>
+            <span class="browser-dot dot-yellow"></span>
+            <span class="browser-dot dot-green"></span>
+          </div>
+          <span class="preview-tag">Web App</span>
+
+          <!-- Overlay muncul saat hover -->
+          <div class="preview-overlay">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
+          </div>
+        </div>
+        <!-- ===== END PREVIEW ===== -->
+
+        <div class="project-body">
+          <h3>Web Portofolio</h3>
+            <div class="desc-scroll">
+             <p>Website portofolio pribadi untuk menampilkan profil, keterampilan, dan proyek, 
+              dengan desain modern serta navigasi yang responsif dan user-friendly.</p>
+            </div>
+
+          <div class="tech-badges">
+            <span class="badge badge-html">HTML</span>
+            <span class="badge badge-css">CSS</span>
+          </div>
+
+          <div class="feature-chips">
+              <span class="chip">Responsive Layout</span>
+              <span class="chip">Flexbox & Grid</span>
+              <span class="chip">CSS Animations</span>
+              <span class="chip">Semantic HTML5</span>
+              <span class="chip">Mobile Friendly</span>
+              <span class="chip">Custom Styling</span>
+          </div>
+
+
+          <div class="card-actions">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="card-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="card-btn primary">Live Demo</a>
+          </div>
+        </div>
       </div>
-    
+      <div class="project-card">
+
+        <!-- ===== PREVIEW AREA ===== -->
+        <div class="project-preview">
+          <!-- 
+            GANTI src di bawah dengan screenshot proyekmu.
+            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
+            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
+          -->
+          <img src="image/web-Ecommerce.png" alt="Preview POS App"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          
+          <!-- Fallback placeholder jika gambar belum ada -->
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
+                      width:100%; height:100%; gap:8px; padding-top:28px;">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
+              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
+            </svg>
+            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
+          </div>
+
+          <div class="browser-bar">
+            <span class="browser-dot dot-red"></span>
+            <span class="browser-dot dot-yellow"></span>
+            <span class="browser-dot dot-green"></span>
+          </div>
+          <span class="preview-tag">Web App</span>
+
+          <!-- Overlay muncul saat hover -->
+          <div class="preview-overlay">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
+          </div>
+        </div>
+        <!-- ===== END PREVIEW ===== -->
+
+        <div class="project-body">
+          <h3>Web E-Commerce - LuckyStore</h3>
+          <div class="desc-scroll">
+            <p>Website E-commerce LuckyStore berupa tampilan frontend menggunakan React.js yang menampilkan katalog produk,
+               keranjang belanja, dan desain antarmuka modern sebagai prototype aplikasi.</p>
+          </div>
+
+          <div class="tech-badges">
+              <span class="badge badge-react">React.js</span>
+              <span class="badge badge-tailwind">Tailwind CSS</span>
+              <span class="badge badge-js">JavaScript ES6</span>
+              <span class="badge badge-vite">Vite</span>
+              <span class="badge badge-router">React Router</span>
+          </div>
+
+
+          <div class="feature-chips">
+              <span class="chip">Dynamic Product Filter</span>
+              <span class="chip">Responsive Design</span>
+              <span class="chip">Context API State</span>
+              <span class="chip">Checkout Flow</span>
+          </div>
+
+
+          <div class="card-actions">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="card-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="card-btn primary">Live Demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+
+        <!-- ===== PREVIEW AREA ===== -->
+        <div class="project-preview">
+          <!-- 
+            GANTI src di bawah dengan screenshot proyekmu.
+            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
+            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
+          -->
+          <img src="image/webComproGPEST.png" alt="Preview POS App"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          
+          <!-- Fallback placeholder jika gambar belum ada -->
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
+                      width:100%; height:100%; gap:8px; padding-top:28px;">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
+              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
+            </svg>
+            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
+          </div>
+
+          <div class="browser-bar">
+            <span class="browser-dot dot-red"></span>
+            <span class="browser-dot dot-yellow"></span>
+            <span class="browser-dot dot-green"></span>
+          </div>
+          <span class="preview-tag">Web App</span>
+
+          <!-- Overlay muncul saat hover -->
+          <div class="preview-overlay">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
+          </div>
+        </div>
+        <!-- ===== END PREVIEW ===== -->
+
+        <div class="project-body">
+          <h3>Web Compro - GPEST</h3>
+          <div class="desc-scroll">
+            <p>Website portofolio pribadi untuk menampilkan profil, keterampilan,
+            dan proyek, dengan desain modern serta navigasi yang responsif dan user-friendly.</p>
+          </div>
+          <div class="tech-badges">
+            <span class="badge badge-html">HTML</span>
+            <span class="badge badge-css">CSS</span>
+            <span class="badge badge-js">JavaScript</span>
+          </div>
+
+          <div class="feature-chips">
+              <span class="chip">Hero Section</span>
+              <span class="chip">Services Grid</span>
+              <span class="chip">Responsive Layout</span>
+              <span class="chip">Contact UI</span>
+              <span class="chip">Smooth Scrolling</span>
+          </div>
+
+
+          <div class="card-actions">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="card-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="card-btn primary">Live Demo</a>
+          </div>
+        </div>
+      </div>
+      <!-- tambah card proyek lain di sini -->
+       <div class="project-card">
+
+        <!-- ===== PREVIEW AREA ===== -->
+        <div class="project-preview">
+          <!-- 
+            GANTI src di bawah dengan screenshot proyekmu.
+            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
+            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
+          -->
+          <img src="image/ProjectPos.png" alt="Preview POS App"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          
+          <!-- Fallback placeholder jika gambar belum ada -->
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
+                      width:100%; height:100%; gap:8px; padding-top:28px;">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
+              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
+            </svg>
+            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
+          </div>
+
+          <div class="browser-bar">
+            <span class="browser-dot dot-red"></span>
+            <span class="browser-dot dot-yellow"></span>
+            <span class="browser-dot dot-green"></span>
+          </div>
+          <span class="preview-tag">Web App</span>
+
+          <!-- Overlay muncul saat hover -->
+          <div class="preview-overlay">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
+          </div>
+        </div>
+        <!-- ===== END PREVIEW ===== -->
+
+        <div class="project-body">
+          <h3>POS (Point of Sales)</h3>
+          <div class="desc-scroll">
+            <p>Aplikasi Point of Sale berbasis web dengan Laravel & Filament untuk mengelola produk,
+                menghitung transaksi otomatis, dan mempercepat proses penjualan.</p>
+          </div>
+
+
+          <div class="tech-badges">
+            <span class="badge badge-laravel">Laravel</span>
+            <span class="badge badge-filament">Filament</span>
+            <span class="badge badge-php">PHP</span>
+            <span class="badge badge-mysql">MySQL</span>
+            <span class="badge badge-js">JavaScript</span>
+            <span class="badge badge-css">CSS</span>
+          </div>
+
+          <div class="feature-chips">
+            <span class="chip">Produk</span>
+            <span class="chip">Transaksi</span>
+            <span class="chip">Stok</span>
+            <span class="chip">Pembayaran</span>
+            <span class="chip">Riwayat</span>
+            <span class="chip">User & Role</span>
+            <span class="chip">Laporan</span>
+            <span class="chip">Dashboard</span>
+          </div>
+
+          <div class="card-actions">
+            <a href="https://github.com/zynly/pos-app" target="_blank" class="card-btn">View Code</a>
+            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="card-btn primary">Live Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="see-more">
-      <a href="https://github.com/dashboard" target="_blank" class="btn">See More on GitHub</a>
+      <a href="https://github.com/dashboard" target="_blank" class="see-more-btn">
+        Lihat Semua Proyek di GitHub &rarr;
+      </a>
     </div>
   </div>
 </section>
