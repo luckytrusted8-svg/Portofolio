@@ -1,538 +1,584 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyPortofolio</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/png" href="logo-lu.jpeg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky Ubaidillah — Developer & Designer</title>
+  <link rel="icon" type="image/png" href="logo-lu.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script src="index.js"></script>
 </head>
 <body>
-   <!-- Navbar -->
-  <header>
-    <div class="navbar">
-      <div class="logo">
-        <a href="#" class="logo">Lucky.U</a>
-      </div>
-        <input type="checkbox" id="nav-toggle" class="nav-toggle">
-        <label for="nav-toggle" class="nav-toggle-label">
-    <span></span>
-  </label>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="#Home">Home</a></li>
-          <li><a href="#about">About me</a></li>
-          <li><a href="#Collection">Collection</a></li>
-          <li><a href="#projects">Projects</a></li>  
-          <li><a href="#contact">Favorite</a></li>
-        </ul>
+
+  <!-- ░░ CURSOR ░░ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ░░ LOADER ░░ -->
+  <div class="loader" id="loader">
+    <div class="loader-text">LU<span>.</span></div>
+  </div>
+
+  <!-- ░░ NAVBAR ░░ -->
+  <header id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Lucky<span>.U</span></a>
+
+      <nav class="nav-links">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#collection" class="nav-link" data-section="collection">Design</a>
+        <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
       </nav>
+
+      <a href="https://wa.me/62895402889544" target="_blank" class="nav-cta">
+        Hire Me <i class="fas fa-arrow-right"></i>
+      </a>
+
+      <button class="burger" id="burger" aria-label="menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- mobile drawer -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#collection" class="mobile-link">Design</a>
+      <a href="#projects" class="mobile-link">Projects</a>
+      <a href="#contact" class="mobile-link">Contact</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="Home">
-    <div class="hero-text">
-      <h1>Hi,I'm Lucky Ubadiillah</h1>
-      <h3>Developer | Designer</h3>
-      <p>
-        Saya adalah seorang Mahasiswa SMK Skill Village Islamic School dengan juruan Pengembangan Perangkat 
-        Lunak dan Gim (PPLG).
-        Portfolio ini saya buat untuk memperlihatkan hasil karya dan perjalanan belajar saya.
-      </p>
-      <a href="#about" class="btn">Selengkapnya →</a>
+  <!-- ░░ HERO ░░ -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="grid-lines"></div>
     </div>
-    <div class="hero-image">
-      <img src="image/lucky.jpeg" alt="Foto Lucky">
+
+    <div class="hero-content">
+      <div class="hero-left reveal">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for work
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm<br />
+          <span class="name-highlight">Lucky</span><br />
+          <span class="title-line">Ubaidillah</span>
+        </h1>
+        <p class="hero-role">
+          <span class="role-tag">Developer</span>
+          <span class="role-sep">·</span>
+          <span class="role-tag">Designer</span>
+        </p>
+        <p class="hero-desc">
+          Mahasiswa SMK Skill Village Islamic School jurusan PPLG. 
+          Membangun pengalaman digital yang menarik dan fungsional.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">Lihat Projects <i class="fas fa-arrow-right"></i></a>
+          <a href="#about" class="btn-ghost">Tentang Saya</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/luckytrusted8-svg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/onlyluxky" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/62895402889544" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="mailto:luckyubaidillah5@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal reveal-delay">
+        <div class="hero-img-wrap">
+          <div class="img-ring"></div>
+          <img src="image/lucky.jpeg" alt="Lucky Ubaidillah" class="hero-img" />
+          <div class="floating-card fc-1">
+            <i class="fas fa-code"></i>
+            <span>Web Dev</span>
+          </div>
+          <div class="floating-card fc-2">
+            <i class="fab fa-figma"></i>
+            <span>UI/UX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-down">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </a>
+  </section>
+
+  <!-- ░░ MARQUEE ░░ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>HTML</span><span>·</span>
+      <span>CSS</span><span>·</span>
+      <span>JavaScript</span><span>·</span>
+      <span>React.js</span><span>·</span>
+      <span>Laravel</span><span>·</span>
+      <span>Figma</span><span>·</span>
+      <span>Canva</span><span>·</span>
+      <span>Tailwind</span><span>·</span>
+      <span>MySQL</span><span>·</span>
+      <span>PHP</span><span>·</span>
+      <span>UI/UX Design</span><span>·</span>
+      <!-- duplicate for seamless loop -->
+      <span>HTML</span><span>·</span>
+      <span>CSS</span><span>·</span>
+      <span>JavaScript</span><span>·</span>
+      <span>React.js</span><span>·</span>
+      <span>Laravel</span><span>·</span>
+      <span>Figma</span><span>·</span>
+      <span>Canva</span><span>·</span>
+      <span>Tailwind</span><span>·</span>
+      <span>MySQL</span><span>·</span>
+      <span>PHP</span><span>·</span>
+      <span>UI/UX Design</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- ░░ ABOUT ░░ -->
+  <section id="about" class="about">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Tentang Saya</span>
+        <h2 class="section-title">Skills & <em>Background</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card reveal" style="--d:0s">
+          <div class="about-card-icon"><i class="fas fa-brain"></i></div>
+          <h3>Soft Skills</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>Teamwork</li>
+            <li><i class="fas fa-check"></i>Communication</li>
+            <li><i class="fas fa-check"></i>Critical Thinking</li>
+            <li><i class="fas fa-check"></i>Time Management</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal" style="--d:.1s">
+          <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Technical Skills</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>HTML & CSS</li>
+            <li><i class="fas fa-check"></i>JavaScript / React</li>
+            <li><i class="fas fa-check"></i>Laravel / PHP</li>
+            <li><i class="fas fa-check"></i>Figma & Canva</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal" style="--d:.2s">
+          <div class="about-card-icon"><i class="fas fa-palette"></i></div>
+          <h3>Skill Set</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>User Research</li>
+            <li><i class="fas fa-check"></i>Web Design</li>
+            <li><i class="fas fa-check"></i>Responsive UI</li>
+            <li><i class="fas fa-check"></i>Prototyping</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal" style="--d:.3s">
+          <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Education</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>SMK Skill Village Islamic School</li>
+            <li><i class="fas fa-check"></i>Jurusan PPLG</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal" style="--d:.4s">
+          <div class="about-card-icon"><i class="fas fa-language"></i></div>
+          <h3>Language</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>Bahasa Indonesia</li>
+            <li><i class="fas fa-check"></i>English (Intermediate)</li>
+          </ul>
+        </div>
+
+        <div class="about-card reveal" style="--d:.5s">
+          <div class="about-card-icon"><i class="fas fa-heart"></i></div>
+          <h3>Interests</h3>
+          <ul>
+            <li><i class="fas fa-check"></i>UI/UX Design</li>
+            <li><i class="fas fa-check"></i>Technology</li>
+            <li><i class="fas fa-check"></i>Web Development</li>
+            <li><i class="fas fa-check"></i>Design Trends</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- skills bar -->
+      <div class="skills-bar-wrap reveal">
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>HTML & CSS</span><span>85%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>JavaScript</span><span>65%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>React.js</span><span>60%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="60"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>Laravel / PHP</span><span>55%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="55"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="skill-bar-label"><span>UI/UX Design</span><span>70%</span></div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
-<section id="about">
-  <div class="info-box">
-
-    <!-- Baris 1 -->
-    <div class="row">
-      <div class="info-item">
-        <h3>Soft Skill</h3>
-        <ul>
-          <li>Teamwork</li>
-          <li>Communication</li>
-          <li>Critical Thinking</li>
-          <li>Time Management</li>
-        </ul>
+  <!-- ░░ DESIGN / COLLECTION ░░ -->
+  <section id="collection" class="collection">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Gallery</span>
+        <h2 class="section-title">Design <em>Collection</em></h2>
+        <p class="section-desc">Hasil karya desain grafis selama belajar di Skill Village</p>
       </div>
 
-      <div class="info-item">
-        <h3>Technical Skill</h3>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>Laravel</li>
-          <li>Canva</li>
-        </ul>
-      </div>
-
-      <div class="info-item">
-        <h3>Skill Set</h3>
-        <ul>
-          <li>User Research</li>
-          <li>Web Design</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Baris 2 -->
-    <div class="row">
-      <div class="info-item">
-        <h3>Education</h3>
-        <p>Skill Vilage Islamic Shcool<br>PPLG<br><span></span></p>
-      </div>
-
-      <div class="info-item">
-        <h3>Language</h3>
-        <p>Indonesia<br>English (Intermediate)</p>
-      </div>
-
-      <div class="info-item">
-        <h3>Interest</h3>
-        <ul>
-          <li>UI/UX Design</li>
-          <li>Technology</li>
-          <li>Web Development</li>
-          <li>Design Trends</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="design-section" id="Collection">
-  <div class="design-container">
-
-    <!-- GAMBAR KIRI — tambah .project-card sebanyak apapun -->
-    <div class="design-projects">
-
-      <div class="project-card">
-        <div class="img-wrapper">
-          <img src="image/Design-PosterKonser.jpg" alt="Design 1">
-        </div>
-        <p class="card-label">— Design Canva —</p>
-      </div>
-
-      <div class="project-card">
-        <div class="img-wrapper">
-          <img src="image/Design-Hamburger.png" alt="Design 2">
-        </div>
-        <p class="card-label">— Design Canva —</p>
-      </div>
-
-      <!-- Gambar ke-3, ke-4, dst — tinggal copy blok ini -->
-      <div class="project-card">
-        <div class="img-wrapper">
-          <img src="image/Design-InnerCup.png" alt="Design 3">
-        </div>
-        <p class="card-label">— Design Canva —</p>
-      </div>
-      <div class="project-card">
-        <div class="img-wrapper">
-          <img src="image/Design UI UX-Etiket.png" alt="Design 3">
-        </div>
-        <p class="card-label">— Design Project Figma —</p>
-      </div>
-
-    </div>
-
-    <!-- TEKS KANAN -->
-    <div class="design-text">
-      <h3>Gallery Design</h3>
-      <h2>Some of <br><em>My Design</em><br>Results</h2>
-      <p>Beberapa hasil desain ku, selama kurang lebih belajar desain grafis di Skill Village.</p>
-      <a href="https://drive.google.com/drive/folders/1Li-Azlsw5jpEWD7cZ55XPmdrEwMzVZn1?usp=sharing" class="see-all">
-        <span>See All</span>
-        <span class="arrow">→</span>
-      </a>
-      <div class="signature">
-        <img src="image/logo-lu.jpeg" alt="Logo">
-        <div class="sig-info">
-          <small>Designed by</small>
-          <strong>Lucky Ubadiillah</strong>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- New Coding Projects Section -->
-<section id="projects" class="projects-section">
-  <div class="projects-container">
-    <p class="section-label">Portfolio</p>
-    <h2>My Projects</h2>
-    <p>Berikut adalah projek yang telah saya selesaikan selama proses belajar sebagai Mahasiswa Pengembangan Perangkat Lunak dan Gim (PPLG).</p>
-
-    <div class="projects-grid">
-      <div class="project-card">
-
-        <!-- ===== PREVIEW AREA ===== -->
-        <div class="project-preview">
-          <!-- 
-            GANTI src di bawah dengan screenshot proyekmu.
-            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
-            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
-          -->
-          <img src="image/webPorto.png" alt="Preview POS App"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          
-          <!-- Fallback placeholder jika gambar belum ada -->
-          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
-                      width:100%; height:100%; gap:8px; padding-top:28px;">
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
-              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
-            </svg>
-            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
-          </div>
-
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-          </div>
-          <span class="preview-tag">Web App</span>
-
-          <!-- Overlay muncul saat hover -->
-          <div class="preview-overlay">
-            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
-            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
-          </div>
-        </div>
-        <!-- ===== END PREVIEW ===== -->
-
-        <div class="project-body">
-          <h3>Web Portofolio</h3>
-            <div class="desc-scroll">
-             <p>Website portofolio pribadi untuk menampilkan profil, keterampilan, dan proyek, 
-              dengan desain modern serta navigasi yang responsif dan user-friendly.</p>
+      <div class="design-layout">
+        <div class="design-grid reveal">
+          <div class="design-card dc-large">
+            <div class="dc-img">
+              <img src="image/Design-PosterKonser.jpg" alt="Poster Konser" loading="lazy" />
+              <div class="dc-overlay">
+                <span>Design Canva</span>
+              </div>
             </div>
-
-          <div class="tech-badges">
-            <span class="badge badge-html">HTML</span>
-            <span class="badge badge-css">CSS</span>
           </div>
-
-          <div class="feature-chips">
-              <span class="chip">Responsive Layout</span>
-              <span class="chip">Flexbox & Grid</span>
-              <span class="chip">CSS Animations</span>
-              <span class="chip">Semantic HTML5</span>
-              <span class="chip">Mobile Friendly</span>
-              <span class="chip">Custom Styling</span>
+          <div class="design-card">
+            <div class="dc-img">
+              <img src="image/Design-Hamburger.png" alt="Hamburger Design" loading="lazy" />
+              <div class="dc-overlay"><span>Design Canva</span></div>
+            </div>
           </div>
-
-
-          <div class="card-actions">
-            <a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank" class="card-btn">View Code</a>
-            <a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank" class="card-btn primary">Live Demo</a>
+          <div class="design-card">
+            <div class="dc-img">
+              <img src="image/Design-InnerCup.png" alt="InnerCup Design" loading="lazy" />
+              <div class="dc-overlay"><span>Design Canva</span></div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="project-card">
-
-        <!-- ===== PREVIEW AREA ===== -->
-        <div class="project-preview">
-          <!-- 
-            GANTI src di bawah dengan screenshot proyekmu.
-            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
-            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
-          -->
-          <img src="image/web-Ecommerce.png" alt="Preview POS App"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          
-          <!-- Fallback placeholder jika gambar belum ada -->
-          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
-                      width:100%; height:100%; gap:8px; padding-top:28px;">
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
-              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
-            </svg>
-            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
-          </div>
-
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-          </div>
-          <span class="preview-tag">Web App</span>
-
-          <!-- Overlay muncul saat hover -->
-          <div class="preview-overlay">
-            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
-            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="overlay-btn">Live Demo</a>
+          <div class="design-card dc-large">
+            <div class="dc-img">
+              <img src="image/Design UI UX-Etiket.png" alt="UI/UX Etiket" loading="lazy" />
+              <div class="dc-overlay"><span>Design Figma</span></div>
+            </div>
           </div>
         </div>
-        <!-- ===== END PREVIEW ===== -->
 
-        <div class="project-body">
-          <h3>Web E-Commerce - LuckyStore</h3>
-          <div class="desc-scroll">
-            <p>Website E-commerce LuckyStore berupa tampilan frontend menggunakan React.js yang menampilkan katalog produk,
-               keranjang belanja, dan desain antarmuka modern sebagai prototype aplikasi.</p>
-          </div>
-
-          <div class="tech-badges">
-              <span class="badge badge-react">React.js</span>
-              <span class="badge badge-tailwind">Tailwind CSS</span>
-              <span class="badge badge-js">JavaScript ES6</span>
-              <span class="badge badge-vite">Vite</span>
-              <span class="badge badge-router">React Router</span>
-          </div>
-
-
-          <div class="feature-chips">
-              <span class="chip">Dynamic Product Filter</span>
-              <span class="chip">Responsive Design</span>
-              <span class="chip">Context API State</span>
-              <span class="chip">Checkout Flow</span>
-          </div>
-
-
-          <div class="card-actions">
-            <a href="https://github.com/luckytrusted8-svg/E-commerce.mini"_blank" class="card-btn">View Code</a>
-            <a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank" class="card-btn primary">Live Demo</a>
-          </div>
-        </div>
-      </div>
-      <div class="project-card">
-
-        <!-- ===== PREVIEW AREA ===== -->
-        <div class="project-preview">
-          <!-- 
-            GANTI src di bawah dengan screenshot proyekmu.
-            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
-            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
-          -->
-          <img src="image/webComproGPEST.png" alt="Preview POS App"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          
-          <!-- Fallback placeholder jika gambar belum ada -->
-          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
-                      width:100%; height:100%; gap:8px; padding-top:28px;">
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
-              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
-            </svg>
-            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
-          </div>
-
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-          </div>
-          <span class="preview-tag">Web App</span>
-
-          <!-- Overlay muncul saat hover -->
-          <div class="preview-overlay">
-            <a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank" class="overlay-btn">View Code</a>
-            <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank" class="overlay-btn">Live Demo</a>
-          </div>
-        </div>
-        <!-- ===== END PREVIEW ===== -->
-
-        <div class="project-body">
-          <h3>Web Compro - GPEST</h3>
-          <div class="desc-scroll">
-            <p>Website company profile GPEST untuk menampilkan layanan pengendalian hama serta memudahkan pelanggan mengakses informasi dan kontak layanan.</p>
-          </div>
-          <div class="tech-badges">
-            <span class="badge badge-html">HTML</span>
-            <span class="badge badge-css">CSS</span>
-            <span class="badge badge-js">JavaScript</span>
-          </div>
-
-          <div class="feature-chips">
-              <span class="chip">Hero Section</span>
-              <span class="chip">Services Grid</span>
-              <span class="chip">Responsive Layout</span>
-              <span class="chip">Contact UI</span>
-              <span class="chip">Smooth Scrolling</span>
-          </div>
-
-
-          <div class="card-actions">
-            <a href="https://github.com/luckytrusted8-svg/gpest.company.profile"_blank" class="card-btn">View Code</a>
-            <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank" class="card-btn primary">Live Demo</a>
-          </div>
-        </div>
-      </div>
-      <!-- tambah card proyek lain di sini -->
-       <div class="project-card">
-
-        <!-- ===== PREVIEW AREA ===== -->
-        <div class="project-preview">
-          <!-- 
-            GANTI src di bawah dengan screenshot proyekmu.
-            Cara ambil screenshot: buka Live Demo → tekan F12 → Ctrl+Shift+P → "Capture screenshot"
-            Simpan gambar, lalu upload ke project/folder assets, contoh: src="assets/pos-screenshot.png"
-          -->
-          <img src="image/ProjectPos.png" alt="Preview POS App"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          
-          <!-- Fallback placeholder jika gambar belum ada -->
-          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center;
-                      width:100%; height:100%; gap:8px; padding-top:28px;">
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="#3b6d11" stroke-width="1.5"/>
-              <path d="M8 10h8M8 14h5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="17" cy="14" r="2" fill="#3b6d11"/>
-            </svg>
-            <span style="color:#3b6d11; font-size:12px; font-family:'DM Sans',sans-serif;">POS App Preview</span>
-          </div>
-
-          <div class="browser-bar">
-            <span class="browser-dot dot-red"></span>
-            <span class="browser-dot dot-yellow"></span>
-            <span class="browser-dot dot-green"></span>
-          </div>
-          <span class="preview-tag">Web App</span>
-
-          <!-- Overlay muncul saat hover -->
-          <div class="preview-overlay">
-            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">View Code</a>
-            <a href="https://github.com/zynly/pos-app" target="_blank" class="overlay-btn">Live Demo</a>
-          </div>
-        </div>
-        <!-- ===== END PREVIEW ===== -->
-
-        <div class="project-body">
-          <h3>POS (Point of Sales)</h3>
-          <div class="desc-scroll">
-            <p>Aplikasi Point of Sale berbasis web dengan Laravel & Filament untuk mengelola produk,
-                menghitung transaksi otomatis, dan mempercepat proses penjualan.</p>
-          </div>
-
-
-          <div class="tech-badges">
-            <span class="badge badge-laravel">Laravel</span>
-            <span class="badge badge-filament">Filament</span>
-            <span class="badge badge-php">PHP</span>
-            <span class="badge badge-mysql">MySQL</span>
-            <span class="badge badge-js">JavaScript</span>
-            <span class="badge badge-css">CSS</span>
-          </div>
-
-          <div class="feature-chips">
-            <span class="chip">Produk</span>
-            <span class="chip">Transaksi</span>
-            <span class="chip">Stok</span>
-            <span class="chip">Pembayaran</span>
-            <span class="chip">Riwayat</span>
-            <span class="chip">User & Role</span>
-            <span class="chip">Laporan</span>
-            <span class="chip">Dashboard</span>
-          </div>
-
-          <div class="card-actions">
-            <a href="https://github.com/zynly/pos-app" target="_blank" class="card-btn">View Code</a>
-            <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank" class="card-btn primary">Live Demo</a>
+        <div class="design-info reveal reveal-delay">
+          <p class="di-label">Gallery Design</p>
+          <h2>Beberapa hasil<br /><em>karya desain</em><br />saya</h2>
+          <p class="di-desc">Koleksi desain grafis yang dibuat menggunakan Canva dan Figma selama proses belajar di Skill Village Islamic School.</p>
+          <a href="https://drive.google.com/drive/folders/1Li-Azlsw5jpEWD7cZ55XPmdrEwMzVZn1?usp=sharing" target="_blank" class="btn-primary">
+            Lihat Semua <i class="fas fa-arrow-right"></i>
+          </a>
+          <div class="di-author">
+            <img src="image/logo-lu.jpeg" alt="Logo LU" />
+            <div>
+              <small>Designed by</small>
+              <strong>Lucky Ubaidillah</strong>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="see-more">
-      <a href="https://github.com/luckytrusted8-svg" target="_blank" class="see-more-btn">
-        Lihat Semua Proyek di GitHub &rarr;
-      </a>
+  <!-- ░░ PROJECTS ░░ -->
+  <section id="projects" class="projects">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">My <em>Projects</em></h2>
+        <p class="section-desc">Proyek yang telah diselesaikan selama belajar sebagai mahasiswa PPLG</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- CARD 1 -->
+        <div class="pcard reveal">
+          <div class="pcard-preview">
+            <img src="image/webPorto.png" alt="Web Portfolio" loading="lazy"
+              onerror="this.style.display='none';" />
+            <div class="pcard-browser">
+              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
+            </div>
+            <div class="pcard-type">Web App</div>
+            <div class="pcard-hover">
+              <a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank">View Code</a>
+              <a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank">Live Demo</a>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <h3>Web Portofolio</h3>
+              <div class="pcard-links">
+                <a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <p>Website portofolio pribadi dengan desain modern, navigasi responsif, dan user-friendly.</p>
+            <div class="pcard-tags">
+              <span class="tag t-html">HTML</span>
+              <span class="tag t-css">CSS</span>
+            </div>
+            <div class="pcard-chips">
+              <span>Responsive</span><span>Flexbox</span><span>Animations</span><span>Mobile First</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="pcard reveal" style="--d:.1s">
+          <div class="pcard-preview">
+            <img src="image/web-Ecommerce.png" alt="E-Commerce" loading="lazy"
+              onerror="this.style.display='none';" />
+            <div class="pcard-browser">
+              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
+            </div>
+            <div class="pcard-type">React App</div>
+            <div class="pcard-hover">
+              <a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank">View Code</a>
+              <a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank">Live Demo</a>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <h3>LuckyStore — E-Commerce</h3>
+              <div class="pcard-links">
+                <a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <p>Frontend e-commerce dengan katalog produk, keranjang belanja, dan antarmuka modern.</p>
+            <div class="pcard-tags">
+              <span class="tag t-react">React.js</span>
+              <span class="tag t-tailwind">Tailwind</span>
+              <span class="tag t-js">JavaScript</span>
+              <span class="tag t-vite">Vite</span>
+            </div>
+            <div class="pcard-chips">
+              <span>Product Filter</span><span>Context API</span><span>Checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="pcard reveal" style="--d:.2s">
+          <div class="pcard-preview">
+            <img src="image/webComproGPEST.png" alt="GPEST" loading="lazy"
+              onerror="this.style.display='none';" />
+            <div class="pcard-browser">
+              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
+            </div>
+            <div class="pcard-type">Web App</div>
+            <div class="pcard-hover">
+              <a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank">View Code</a>
+              <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank">Live Demo</a>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <h3>Web Compro — GPEST</h3>
+              <div class="pcard-links">
+                <a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <p>Company profile GPEST untuk layanan pengendalian hama, memudahkan pelanggan mengakses info dan kontak.</p>
+            <div class="pcard-tags">
+              <span class="tag t-html">HTML</span>
+              <span class="tag t-css">CSS</span>
+              <span class="tag t-js">JavaScript</span>
+            </div>
+            <div class="pcard-chips">
+              <span>Hero Section</span><span>Services Grid</span><span>Contact UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="pcard reveal" style="--d:.3s">
+          <div class="pcard-preview">
+            <img src="image/ProjectPos.png" alt="POS App" loading="lazy"
+              onerror="this.style.display='none';" />
+            <div class="pcard-browser">
+              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
+            </div>
+            <div class="pcard-type">Laravel App</div>
+            <div class="pcard-hover">
+              <a href="https://github.com/zynly/pos-app" target="_blank">View Code</a>
+              <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank">Live Demo</a>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top">
+              <h3>POS — Point of Sales</h3>
+              <div class="pcard-links">
+                <a href="https://github.com/zynly/pos-app" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <p>Aplikasi POS berbasis web dengan Laravel & Filament untuk transaksi, stok, dan laporan otomatis.</p>
+            <div class="pcard-tags">
+              <span class="tag t-laravel">Laravel</span>
+              <span class="tag t-php">PHP</span>
+              <span class="tag t-mysql">MySQL</span>
+              <span class="tag t-js">JS</span>
+            </div>
+            <div class="pcard-chips">
+              <span>Produk</span><span>Transaksi</span><span>Stok</span><span>Dashboard</span><span>Laporan</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="projects-more reveal">
+        <a href="https://github.com/luckytrusted8-svg" target="_blank" class="btn-ghost">
+          <i class="fab fa-github"></i> Lihat Semua di GitHub
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Expertise -->
-<section id="expertise" class="grid-section">
-  <div class="card">
-    <h3>Expertise Average : <span>50%</span></h3>
-    <p>Beberapa tools yang digunakan:</p>
-    <div class="tools">
-      <div class="tool">
-        <i class="fab fa-html5" style="color:orangered;"></i>
-        HTML
-      </div>
-      <div class="tool">
-        <i class="fab fa-css3-alt" style="color:blue;"></i>
-        CSS
-      </div>
-      <div class="tool">
-        <i class="fab fa-js" style="color:#f7df1e;"></i>
-        JavaScript
+  <!-- ░░ TOOLS ░░ -->
+  <section id="tools" class="tools-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Expertise</span>
+        <h2 class="section-title">Tools & <em>Technologies</em></h2>
       </div>
 
-      <div class="tool">
-        <i class="fab fa-figma" style="color:red;"></i>
-        Figma
-      </div>
-      <div class="tool">
-        <i class="fab fa-laravel" style="color:red;"></i>
-        Laravel
-      </div>
-      <div class="tool">
-        <i class="fas fa-cogs" style="color:gray;"></i>
-        Filament
-      </div>
-      <div class="tool">
-        <i class="fas fa-database" style="color:lightblue;"></i>
-        MySQL
+      <div class="tools-grid reveal">
+        <div class="tool-item">
+          <i class="fab fa-html5" style="color:#E34F26;"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-css3-alt" style="color:#1572B6;"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-js" style="color:#F7DF1E;"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-react" style="color:#61DAFB;"></i>
+          <span>React.js</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-laravel" style="color:#FF2D20;"></i>
+          <span>Laravel</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-php" style="color:#8892BE;"></i>
+          <span>PHP</span>
+        </div>
+        <div class="tool-item">
+          <i class="fas fa-database" style="color:#4479A1;"></i>
+          <span>MySQL</span>
+        </div>
+        <div class="tool-item">
+          <i class="fab fa-figma" style="color:#F24E1E;"></i>
+          <span>Figma</span>
+        </div>
       </div>
     </div>
-  </div>
-<!-- Contact -->
-<section id="contact">
-<div class="card contact-card">
-  <h3>Contact</h3>
+  </section>
 
-  <div class="contact-item">
-    <i class="fab fa-whatsapp whatsapp"></i>
-    <span>WhatsApp</span>
-    <a href="https://wa.me/62895402889544" target="_blank">0895-4028-89544</a>
-  </div>
+  <!-- ░░ CONTACT ░░ -->
+  <section id="contact" class="contact">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Let's <em>Connect</em></h2>
+        <p class="section-desc">Tertarik berkolaborasi? Jangan ragu untuk menghubungi saya!</p>
+      </div>
 
-  <div class="contact-item">
-    <i class="fab fa-instagram instagram"></i>
-    <span>Instagram</span>
-    <a href="https://instagram.com/onlyluxky" target="_blank">onlyluxky</a>
-  </div>
+      <div class="contact-layout">
+        <div class="contact-cta reveal">
+          <h3>Siap untuk berkolaborasi<br />bersama?</h3>
+          <p>Saya terbuka untuk project freelance, kolaborasi, maupun diskusi seputar teknologi dan desain.</p>
+          <a href="mailto:luckyubaidillah5@gmail.com" class="btn-primary">
+            Send Email <i class="fas fa-paper-plane"></i>
+          </a>
+        </div>
 
-  <div class="contact-item discord-copy" onclick="copyDiscord()">
-    <i class="fab fa-discord discord"></i>
-    <span>Discord</span>
-    <small>LuckyTrusted17 (click to copy)</small>
-  </div>
+        <div class="contact-cards reveal reveal-delay">
+          <a href="https://wa.me/62895402889544" target="_blank" class="contact-card">
+            <div class="cc-icon" style="--c:#25D366"><i class="fab fa-whatsapp"></i></div>
+            <div class="cc-info">
+              <span>WhatsApp</span>
+              <strong>0895-4028-89544</strong>
+            </div>
+            <i class="fas fa-arrow-right cc-arrow"></i>
+          </a>
 
-  <div class="contact-item">
-    <i class="fas fa-envelope email"></i>
-    <span>Email</span>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=luckyubaidillah5@gmail.com" target="_blank">
-      luckyubaidillah5@gmail.com
-    </a>
-  </div>
-</div>
+          <a href="https://instagram.com/onlyluxky" target="_blank" class="contact-card">
+            <div class="cc-icon" style="--c:#E1306C"><i class="fab fa-instagram"></i></div>
+            <div class="cc-info">
+              <span>Instagram</span>
+              <strong>@onlyluxky</strong>
+            </div>
+            <i class="fas fa-arrow-right cc-arrow"></i>
+          </a>
 
-</section>
-</section>
-<footer>
-<p>&copy; 2025 MyPortofolio. Dibuat oleh Lucky</p>
-</footer>
-<script>
-function copyDiscord() {
-  navigator.clipboard.writeText("LuckyTrusted17");
-  alert("Username Discord berhasil disalin!");
-}
-</script>
+          <div class="contact-card" onclick="copyDiscord()" style="cursor:pointer;">
+            <div class="cc-icon" style="--c:#7289DA"><i class="fab fa-discord"></i></div>
+            <div class="cc-info">
+              <span>Discord</span>
+              <strong>LuckyTrusted17</strong>
+            </div>
+            <i class="fas fa-copy cc-arrow"></i>
+          </div>
+
+          <a href="mailto:luckyubaidillah5@gmail.com" class="contact-card">
+            <div class="cc-icon" style="--c:#FF6A00"><i class="fas fa-envelope"></i></div>
+            <div class="cc-info">
+              <span>Email</span>
+              <strong>luckyubaidillah5@gmail.com</strong>
+            </div>
+            <i class="fas fa-arrow-right cc-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">Lucky<span>.U</span></span>
+      <p>© 2025 Lucky Ubaidillah. Dibuat dengan <i class="fas fa-heart" style="color:#e74c3c;"></i></p>
+      <div class="footer-socials">
+        <a href="https://github.com/luckytrusted8-svg" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/onlyluxky" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ░░ TOAST ░░ -->
+  <div class="toast" id="toast">Discord username disalin! 🎮</div>
+
+  <script src="script.js"></script>
 </body>
 </html>
