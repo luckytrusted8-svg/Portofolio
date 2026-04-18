@@ -1,74 +1,124 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lucky Ubaidillah — Developer & Designer</title>
+  <meta name="description" content="Lucky Ubaidillah — Developer & Designer. Mahasiswa PPLG Skill Village Islamic School yang membangun pengalaman digital menarik." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"             content="website" />
+  <meta property="og:url"              content="https://luckytrusted8-svg.github.io/Portofolio/" />
+  <meta property="og:title"            content="Lucky Ubaidillah — Developer & Designer" />
+  <meta property="og:description"      content="Mahasiswa PPLG yang membangun pengalaman digital yang menarik dan fungsional." />
+  <meta property="og:image"            content="https://luckytrusted8-svg.github.io/Portofolio/image/lucky.jpeg" />
+  <meta property="twitter:card"        content="summary_large_image" />
+  <meta property="twitter:title"       content="Lucky Ubaidillah — Developer & Designer" />
+  <meta property="twitter:description" content="Mahasiswa PPLG yang membangun pengalaman digital menarik." />
+  <meta property="twitter:image"       content="https://luckytrusted8-svg.github.io/Portofolio/image/lucky.jpeg" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0a0f" id="themeColorMeta" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Lucky.U" />
+
   <link rel="icon" type="image/png" href="logo-lu.jpeg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <link rel="stylesheet" href="index.css" />
-  <script src="index.js"></script>
+  <link rel="stylesheet" href="theme-mode.css" />
+  <link rel="stylesheet" href="about-new-addition.css" />
+  <link rel="stylesheet" href="features.css" />
+
+  <!-- Anti-flash -->
+  <script>
+    (function(){
+      var t=localStorage.getItem('lu-theme');
+      if(!t) t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';
+      document.documentElement.setAttribute('data-theme',t);
+    })();
+  </script>
+  <script src="index.js" defer></script>
 </head>
 <body>
 
-  <!-- ░░ CURSOR ░░ -->
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-trail" id="cursorTrail"></div>
 
-  <!-- ░░ LOADER ░░ -->
+  <!-- LOADER -->
   <div class="loader" id="loader">
     <div class="loader-text">LU<span>.</span></div>
   </div>
 
-  <!-- ░░ NAVBAR ░░ -->
+  <!-- NAVBAR -->
   <header id="navbar">
     <div class="nav-inner">
       <a href="#home" class="nav-logo">Lucky<span>.U</span></a>
-
       <nav class="nav-links">
-        <a href="#home" class="nav-link active" data-section="home">Home</a>
-        <a href="#about" class="nav-link" data-section="about">About</a>
-        <a href="#collection" class="nav-link" data-section="collection">Design</a>
-        <a href="#projects" class="nav-link" data-section="projects">Projects</a>
-        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        <a href="#home"       class="nav-link active" data-section="home">Home</a>
+        <a href="#about"      class="nav-link"        data-section="about">About</a>
+        <a href="#skills"     class="nav-link"        data-section="skills">Skills</a>
+        <a href="#collection" class="nav-link"        data-section="collection">Design</a>
+        <a href="#projects"   class="nav-link"        data-section="projects">Projects</a>
+        <a href="#blog"       class="nav-link"        data-section="blog">Blog</a>
+        <a href="#contact"    class="nav-link"        data-section="contact">Contact</a>
       </nav>
-
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to Light Mode">
+        <div class="theme-toggle__track-icons">
+          <i class="fas fa-moon ti-moon"></i><i class="fas fa-sun ti-sun"></i>
+        </div>
+        <div class="theme-toggle__knob">
+          <i class="fas fa-moon icon-moon"></i><i class="fas fa-sun icon-sun"></i>
+        </div>
+      </button>
       <a href="https://wa.me/62895402889544" target="_blank" class="nav-cta">
         Hire Me <i class="fas fa-arrow-right"></i>
       </a>
-
       <button class="burger" id="burger" aria-label="menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-
-    <!-- mobile drawer -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#home" class="mobile-link">Home</a>
-      <a href="#about" class="mobile-link">About</a>
+      <a href="#home"       class="mobile-link">Home</a>
+      <a href="#about"      class="mobile-link">About</a>
+      <a href="#skills"     class="mobile-link">Skills</a>
       <a href="#collection" class="mobile-link">Design</a>
-      <a href="#projects" class="mobile-link">Projects</a>
-      <a href="#contact" class="mobile-link">Contact</a>
+      <a href="#projects"   class="mobile-link">Projects</a>
+      <a href="#blog"       class="mobile-link">Blog</a>
+      <a href="#contact"    class="mobile-link">Contact</a>
+      <div class="mobile-theme-row">
+        <span id="mobileThemeLabel">Light Mode</span>
+        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle Theme">
+          <div class="theme-toggle__track-icons">
+            <i class="fas fa-moon ti-moon"></i><i class="fas fa-sun ti-sun"></i>
+          </div>
+          <div class="theme-toggle__knob">
+            <i class="fas fa-moon icon-moon"></i><i class="fas fa-sun icon-sun"></i>
+          </div>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- ░░ HERO ░░ -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="hero-bg">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
       <div class="grid-lines"></div>
     </div>
-
     <div class="hero-content">
       <div class="hero-left reveal">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Available for work
-        </div>
+        <div class="hero-badge"><span class="badge-dot"></span>Available for work</div>
         <h1 class="hero-title">
           Hi, I'm<br />
           <span class="name-highlight">Lucky</span><br />
@@ -79,12 +129,16 @@
           <span class="role-sep">·</span>
           <span class="role-tag">Designer</span>
         </p>
+        <div class="hero-typing">
+          <span class="typing-prefix">I specialize in </span><span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
+        </div>
         <p class="hero-desc">
-          Mahasiswa SMK Skill Village Islamic School jurusan PPLG. 
+          Mahasiswa SMK Skill Village Islamic School jurusan PPLG.
           Membangun pengalaman digital yang menarik dan fungsional.
         </p>
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">Lihat Projects <i class="fas fa-arrow-right"></i></a>
+          <a href="Lucky_Ubaidillah_CV.pdf" download class="btn-ghost btn-cv"><i class="fas fa-download"></i> Download CV</a>
           <a href="#about" class="btn-ghost">Tentang Saya</a>
         </div>
         <div class="hero-socials">
@@ -94,157 +148,209 @@
           <a href="mailto:luckyubaidillah5@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-
       <div class="hero-right reveal reveal-delay">
         <div class="hero-img-wrap">
           <div class="img-ring"></div>
           <img src="image/lucky.jpeg" alt="Lucky Ubaidillah" class="hero-img" />
-          <div class="floating-card fc-1">
-            <i class="fas fa-code"></i>
-            <span>Web Dev</span>
-          </div>
-          <div class="floating-card fc-2">
-            <i class="fas fa-brain"></i>
-            <span>Critical Thinking</span>
-          </div>
+          <div class="floating-card fc-1"><i class="fas fa-code"></i><span>Web Dev</span></div>
+          <div class="floating-card fc-2"><i class="fas fa-brain"></i><span>Critical Thinking</span></div>
         </div>
       </div>
     </div>
-
-    <a href="#about" class="scroll-down">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </a>
+    <a href="#about" class="scroll-down"><span>Scroll</span><div class="scroll-line"></div></a>
   </section>
 
-  <!-- ░░ MARQUEE ░░ -->
+  <!-- MARQUEE -->
   <div class="marquee-strip">
     <div class="marquee-track">
-      <span>HTML</span><span>·</span>
-      <span>CSS</span><span>·</span>
-      <span>JavaScript</span><span>·</span>
-      <span>React.js</span><span>·</span>
-      <span>Laravel</span><span>·</span>
-      <span>Figma</span><span>·</span>
-      <span>Canva</span><span>·</span>
-      <span>Tailwind</span><span>·</span>
-      <span>MySQL</span><span>·</span>
-      <span>PHP</span><span>·</span>
-      <span>UI/UX Design</span><span>·</span>
-      <!-- duplicate for seamless loop -->
-      <span>HTML</span><span>·</span>
-      <span>CSS</span><span>·</span>
-      <span>JavaScript</span><span>·</span>
-      <span>React.js</span><span>·</span>
-      <span>Laravel</span><span>·</span>
-      <span>Figma</span><span>·</span>
-      <span>Canva</span><span>·</span>
-      <span>Tailwind</span><span>·</span>
-      <span>MySQL</span><span>·</span>
-      <span>PHP</span><span>·</span>
-      <span>UI/UX Design</span><span>·</span>
+      <span>HTML</span><span>·</span><span>CSS</span><span>·</span><span>JavaScript</span><span>·</span>
+      <span>React.js</span><span>·</span><span>Laravel</span><span>·</span><span>Figma</span><span>·</span>
+      <span>Canva</span><span>·</span><span>Tailwind</span><span>·</span><span>MySQL</span><span>·</span>
+      <span>PHP</span><span>·</span><span>UI/UX Design</span><span>·</span>
+      <span>HTML</span><span>·</span><span>CSS</span><span>·</span><span>JavaScript</span><span>·</span>
+      <span>React.js</span><span>·</span><span>Laravel</span><span>·</span><span>Figma</span><span>·</span>
+      <span>Canva</span><span>·</span><span>Tailwind</span><span>·</span><span>MySQL</span><span>·</span>
+      <span>PHP</span><span>·</span><span>UI/UX Design</span><span>·</span>
     </div>
   </div>
 
-  <!-- ░░ ABOUT ░░ -->
-  <section id="about" class="about">
+  <!-- ABOUT (Farabi-style) -->
+  <section id="about" class="about-new">
+    <div class="about-new__bg">
+      <div class="about-new__grid"></div>
+      <div class="about-new__blob ab-blob-1"></div>
+      <div class="about-new__blob ab-blob-2"></div>
+    </div>
     <div class="section-container">
-      <div class="section-header reveal">
-        <span class="section-label">Tentang Saya</span>
-        <h2 class="section-title">Skills & <em>Background</em></h2>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card reveal" style="--d:0s">
-          <div class="about-card-icon"><i class="fas fa-brain"></i></div>
-          <h3>Soft Skills</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>Teamwork</li>
-            <li><i class="fas fa-check"></i>Communication</li>
-            <li><i class="fas fa-check"></i>Critical Thinking</li>
-            <li><i class="fas fa-check"></i>Time Management</li>
-          </ul>
+      <div class="abn-top reveal">
+        <div class="abn-photo-wrap">
+          <div class="abn-photo-ring"></div>
+          <img src="image/lucky.jpeg" alt="Lucky Ubaidillah" class="abn-photo" />
+          <div class="abn-badge-name">
+            <img src="image/logo-lu.jpeg" alt="LU" class="abn-badge-avatar" />
+            <div><strong>Lucky Ubaidillah</strong><span>Developer &amp; Designer</span></div>
+          </div>
         </div>
-
-        <div class="about-card reveal" style="--d:.1s">
-          <div class="about-card-icon"><i class="fas fa-laptop-code"></i></div>
-          <h3>Technical Skills</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>HTML & CSS</li>
-            <li><i class="fas fa-check"></i>JavaScript / React</li>
-            <li><i class="fas fa-check"></i>Laravel / PHP</li>
-            <li><i class="fas fa-check"></i>Figma & Canva</li>
-          </ul>
-        </div>
-
-        <div class="about-card reveal" style="--d:.2s">
-          <div class="about-card-icon"><i class="fas fa-palette"></i></div>
-          <h3>Skill Set</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>User Research</li>
-            <li><i class="fas fa-check"></i>Web Design</li>
-            <li><i class="fas fa-check"></i>Responsive UI</li>
-            <li><i class="fas fa-check"></i>Prototyping</li>
-          </ul>
-        </div>
-
-        <div class="about-card reveal" style="--d:.3s">
-          <div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>Education</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>SMK Skill Village Islamic School</li>
-            <li><i class="fas fa-check"></i>Jurusan PPLG</li>
-          </ul>
-        </div>
-
-        <div class="about-card reveal" style="--d:.4s">
-          <div class="about-card-icon"><i class="fas fa-language"></i></div>
-          <h3>Language</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>Bahasa Indonesia</li>
-            <li><i class="fas fa-check"></i>English (Intermediate)</li>
-          </ul>
-        </div>
-
-        <div class="about-card reveal" style="--d:.5s">
-          <div class="about-card-icon"><i class="fas fa-heart"></i></div>
-          <h3>Interests</h3>
-          <ul>
-            <li><i class="fas fa-check"></i>UI/UX Design</li>
-            <li><i class="fas fa-check"></i>Technology</li>
-            <li><i class="fas fa-check"></i>Web Development</li>
-            <li><i class="fas fa-check"></i>Design Trends</li>
-          </ul>
+        <div class="abn-intro">
+          <div class="abn-label-wrap"><span class="section-label">Tentang Saya</span></div>
+          <h2 class="abn-heading">Hai, Saya <em>Lucky</em></h2>
+          <div class="abn-divider"></div>
+          <h3 class="abn-sub">Perkenalan Tentang Saya</h3>
+          <p class="abn-text">Nama lengkap saya <strong>Lucky Ubaidillah</strong>. Saya seorang Mahasiswa SMK <strong>Skill Village Islamic School</strong> jurusan PPLG yang memiliki passion dalam dunia teknologi dan desain digital.</p>
+          <p class="abn-text">Saya memiliki kemampuan di bidang <strong>Web Development</strong> dan <strong>UI/UX Design</strong>, menguasai tools seperti Figma, Canva, serta framework React.js dan Laravel.</p>
+          <div class="abn-stats">
+            <div class="abn-stat">
+              <div class="abn-stat-num-row"><span class="abn-stat-num counter" data-target="4">0</span><span class="abn-stat-num">+</span></div>
+              <span class="abn-stat-lbl">Projects</span>
+            </div>
+            <div class="abn-stat-divider"></div>
+            <div class="abn-stat">
+              <div class="abn-stat-num-row"><span class="abn-stat-num counter" data-target="2">0</span><span class="abn-stat-num">+</span></div>
+              <span class="abn-stat-lbl">Tahun Belajar</span>
+            </div>
+            <div class="abn-stat-divider"></div>
+            <div class="abn-stat">
+              <div class="abn-stat-num-row"><span class="abn-stat-num counter" data-target="8">0</span><span class="abn-stat-num">+</span></div>
+              <span class="abn-stat-lbl">Tools Dikuasai</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- skills bar -->
-      <div class="skills-bar-wrap reveal">
-        <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>HTML & CSS</span><span>85%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div>
+      <div class="abn-grid reveal reveal-delay">
+        <div class="abn-col">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-laptop-code"></i></div><h4>Skill <span>Software</span></h4></div>
+          <ul class="abn-list">
+            <li><i class="fas fa-chevron-right"></i>Adobe Illustrator</li>
+            <li><i class="fas fa-chevron-right"></i>Adobe Photoshop</li>
+            <li><i class="fas fa-chevron-right"></i>Figma</li>
+            <li><i class="fas fa-chevron-right"></i>Canva</li>
+            <li><i class="fas fa-chevron-right"></i>VS Code</li>
+          </ul>
         </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>JavaScript</span><span>65%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div>
+        <div class="abn-col">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-code"></i></div><h4>Hard <span>Skill</span></h4></div>
+          <ul class="abn-list">
+            <li><i class="fas fa-chevron-right"></i>Web Development</li>
+            <li><i class="fas fa-chevron-right"></i>UI/UX Design</li>
+            <li><i class="fas fa-chevron-right"></i>Responsive Design</li>
+            <li><i class="fas fa-chevron-right"></i>Database (MySQL)</li>
+            <li><i class="fas fa-chevron-right"></i>Prototyping</li>
+          </ul>
         </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>React.js</span><span>60%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="60"></div></div>
+        <div class="abn-col">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-users"></i></div><h4>Soft <span>Skill</span></h4></div>
+          <ul class="abn-list">
+            <li><i class="fas fa-chevron-right"></i>Teamwork</li>
+            <li><i class="fas fa-chevron-right"></i>Communication</li>
+            <li><i class="fas fa-chevron-right"></i>Critical Thinking</li>
+            <li><i class="fas fa-chevron-right"></i>Time Management</li>
+            <li><i class="fas fa-chevron-right"></i>Problem Solving</li>
+          </ul>
         </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>Laravel / PHP</span><span>55%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="55"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-label"><span>UI/UX Design</span><span>70%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div>
+        <div class="abn-col abn-col--contact">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-share-nodes"></i></div><h4>Kontak <span>Sosial Media</span></h4></div>
+          <ul class="abn-list abn-list--contact">
+            <li><i class="fab fa-instagram"></i><a href="https://instagram.com/onlyluxky" target="_blank">@onlyluxky</a></li>
+            <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/62895402889544" target="_blank">0895-4028-89544</a></li>
+            <li><i class="fas fa-envelope"></i><a href="mailto:luckyubaidillah5@gmail.com">luckyubaidillah5@gmail.com</a></li>
+            <li><i class="fab fa-github"></i><a href="https://github.com/luckytrusted8-svg" target="_blank">luckytrusted8-svg</a></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ DESIGN / COLLECTION ░░ -->
+  <!-- SKILLS -->
+  <section id="skills" class="about">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Resume</span>
+        <h2 class="section-title">Skills &amp; <em>Expertise</em></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal" style="--d:0s"><div class="about-card-icon"><i class="fas fa-brain"></i></div><h3>Soft Skills</h3><ul><li><i class="fas fa-check"></i>Teamwork</li><li><i class="fas fa-check"></i>Communication</li><li><i class="fas fa-check"></i>Critical Thinking</li><li><i class="fas fa-check"></i>Time Management</li></ul></div>
+        <div class="about-card reveal" style="--d:.1s"><div class="about-card-icon"><i class="fas fa-laptop-code"></i></div><h3>Technical Skills</h3><ul><li><i class="fas fa-check"></i>HTML &amp; CSS</li><li><i class="fas fa-check"></i>JavaScript / React</li><li><i class="fas fa-check"></i>Laravel / PHP</li><li><i class="fas fa-check"></i>Figma &amp; Canva</li></ul></div>
+        <div class="about-card reveal" style="--d:.2s"><div class="about-card-icon"><i class="fas fa-palette"></i></div><h3>Skill Set</h3><ul><li><i class="fas fa-check"></i>User Research</li><li><i class="fas fa-check"></i>Web Design</li><li><i class="fas fa-check"></i>Responsive UI</li><li><i class="fas fa-check"></i>Prototyping</li></ul></div>
+        <div class="about-card reveal" style="--d:.3s"><div class="about-card-icon"><i class="fas fa-graduation-cap"></i></div><h3>Education</h3><ul><li><i class="fas fa-check"></i>SMK Skill Village Islamic School</li><li><i class="fas fa-check"></i>Jurusan PPLG</li></ul></div>
+        <div class="about-card reveal" style="--d:.4s"><div class="about-card-icon"><i class="fas fa-language"></i></div><h3>Language</h3><ul><li><i class="fas fa-check"></i>Bahasa Indonesia</li><li><i class="fas fa-check"></i>English (Intermediate)</li></ul></div>
+        <div class="about-card reveal" style="--d:.5s"><div class="about-card-icon"><i class="fas fa-heart"></i></div><h3>Interests</h3><ul><li><i class="fas fa-check"></i>UI/UX Design</li><li><i class="fas fa-check"></i>Technology</li><li><i class="fas fa-check"></i>Web Development</li><li><i class="fas fa-check"></i>Design Trends</li></ul></div>
+      </div>
+      <div class="skills-bar-wrap reveal">
+        <div class="skill-bar-item"><div class="skill-bar-label"><span>HTML &amp; CSS</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="85"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label"><span>JavaScript</span><span>65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label"><span>React.js</span><span>60%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="60"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label"><span>Laravel / PHP</span><span>55%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="55"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-label"><span>UI/UX Design</span><span>70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-w="70"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline" class="timeline-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Perjalanan</span>
+        <h2 class="section-title">Jejak <em>Karir</em></h2>
+        <p class="section-desc">Pengalaman dan pencapaian selama perjalanan belajar saya</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item tl-left reveal">
+          <div class="tl-content">
+            <div class="tl-header"><span class="tl-tag tl-tag--edu">Pendidikan</span><span class="tl-year">2023 — Sekarang</span></div>
+            <h3>SMK Skill Village Islamic School</h3>
+            <p class="tl-role">Siswa — Jurusan PPLG</p>
+            <ul class="tl-list">
+              <li>Mempelajari Web Development (HTML, CSS, JS, PHP, Laravel)</li>
+              <li>Belajar UI/UX Design menggunakan Figma &amp; Canva</li>
+              <li>Mengerjakan project nyata sebagai bagian dari kurikulum</li>
+            </ul>
+          </div>
+          <div class="tl-dot"><i class="fas fa-graduation-cap"></i></div>
+        </div>
+        <div class="tl-item tl-right reveal" style="--d:.1s">
+          <div class="tl-dot"><i class="fas fa-code"></i></div>
+          <div class="tl-content">
+            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2024</span></div>
+            <h3>Web Portofolio &amp; LuckyStore</h3>
+            <p class="tl-role">Personal Project — Frontend Developer</p>
+            <ul class="tl-list">
+              <li>Membangun portofolio pribadi dengan desain modern &amp; responsif</li>
+              <li>Mini e-commerce menggunakan React.js &amp; Tailwind CSS</li>
+              <li>Menerapkan Context API untuk state management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item tl-left reveal" style="--d:.2s">
+          <div class="tl-content">
+            <div class="tl-header"><span class="tl-tag tl-tag--collab">Kolaborasi</span><span class="tl-year">2024</span></div>
+            <h3>POS — Point of Sales App</h3>
+            <p class="tl-role">Web Developer — Laravel &amp; Filament</p>
+            <ul class="tl-list">
+              <li>Berkolaborasi membangun aplikasi POS berbasis web</li>
+              <li>Fitur produk, transaksi, stok, dan laporan otomatis</li>
+              <li>Deploy ke Hostinger</li>
+            </ul>
+          </div>
+          <div class="tl-dot"><i class="fas fa-store"></i></div>
+        </div>
+        <div class="tl-item tl-right reveal" style="--d:.3s">
+          <div class="tl-dot"><i class="fas fa-building"></i></div>
+          <div class="tl-content">
+            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2024</span></div>
+            <h3>Web Company Profile — GPEST</h3>
+            <p class="tl-role">Frontend Developer — HTML/CSS/JS</p>
+            <ul class="tl-list">
+              <li>Company profile untuk layanan pengendalian hama</li>
+              <li>Hero section, services grid, dan contact UI modern</li>
+              <li>Deploy menggunakan GitHub Pages</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN COLLECTION -->
   <section id="collection" class="collection">
     <div class="section-container">
       <div class="section-header reveal">
@@ -252,57 +358,36 @@
         <h2 class="section-title">Design <em>Collection</em></h2>
         <p class="section-desc">Hasil karya desain grafis selama belajar di Skill Village</p>
       </div>
-
       <div class="design-layout">
         <div class="design-grid reveal">
-          <div class="design-card dc-large">
-            <div class="dc-img">
-              <img src="image/Design-PosterKonser.jpg" alt="Poster Konser" loading="lazy" />
-              <div class="dc-overlay">
-                <span>Design Canva</span>
-              </div>
-            </div>
+          <div class="design-card dc-large lb-trigger" data-src="image/Design-PosterKonser.jpg" data-caption="Poster Konser — Design Canva">
+            <div class="dc-img"><img src="image/Design-PosterKonser.jpg" alt="Poster Konser" loading="lazy" /><div class="dc-overlay"><span>Design Canva</span><i class="fas fa-expand dc-zoom"></i></div></div>
           </div>
-          <div class="design-card">
-            <div class="dc-img">
-              <img src="image/Design-Hamburger.png" alt="Hamburger Design" loading="lazy" />
-              <div class="dc-overlay"><span>Design Canva</span></div>
-            </div>
+          <div class="design-card lb-trigger" data-src="image/Design-Hamburger.png" data-caption="Hamburger Design — Design Canva">
+            <div class="dc-img"><img src="image/Design-Hamburger.png" alt="Hamburger Design" loading="lazy" /><div class="dc-overlay"><span>Design Canva</span><i class="fas fa-expand dc-zoom"></i></div></div>
           </div>
-          <div class="design-card">
-            <div class="dc-img">
-              <img src="image/Design-InnerCup.png" alt="InnerCup Design" loading="lazy" />
-              <div class="dc-overlay"><span>Design Canva</span></div>
-            </div>
+          <div class="design-card lb-trigger" data-src="image/Design-InnerCup.png" data-caption="InnerCup Design — Design Canva">
+            <div class="dc-img"><img src="image/Design-InnerCup.png" alt="InnerCup Design" loading="lazy" /><div class="dc-overlay"><span>Design Canva</span><i class="fas fa-expand dc-zoom"></i></div></div>
           </div>
-          <div class="design-card dc-large">
-            <div class="dc-img">
-              <img src="image/Design UI UX-Etiket.png" alt="UI/UX Etiket" loading="lazy" />
-              <div class="dc-overlay"><span>Design Figma</span></div>
-            </div>
+          <div class="design-card dc-large lb-trigger" data-src="image/Design UI UX-Etiket.png" data-caption="UI/UX Etiket — Design Figma">
+            <div class="dc-img"><img src="image/Design UI UX-Etiket.png" alt="UI/UX Etiket" loading="lazy" /><div class="dc-overlay"><span>Design Figma</span><i class="fas fa-expand dc-zoom"></i></div></div>
           </div>
         </div>
-
         <div class="design-info reveal reveal-delay">
           <p class="di-label">Gallery Design</p>
           <h2>Beberapa hasil<br /><em>karya desain</em><br />saya</h2>
-          <p class="di-desc">Koleksi desain grafis yang dibuat menggunakan Canva dan Figma selama proses belajar di Skill Village Islamic School.</p>
-          <a href="https://drive.google.com/drive/folders/1Li-Azlsw5jpEWD7cZ55XPmdrEwMzVZn1?usp=sharing" target="_blank" class="btn-primary">
-            Lihat Semua <i class="fas fa-arrow-right"></i>
-          </a>
+          <p class="di-desc">Koleksi desain grafis dibuat menggunakan Canva dan Figma selama proses belajar di Skill Village Islamic School.</p>
+          <a href="https://drive.google.com/drive/folders/1Li-Azlsw5jpEWD7cZ55XPmdrEwMzVZn1?usp=sharing" target="_blank" class="btn-primary">Lihat Semua <i class="fas fa-arrow-right"></i></a>
           <div class="di-author">
             <img src="image/logo-lu.jpeg" alt="Logo LU" />
-            <div>
-              <small>Designed by</small>
-              <strong>Lucky Ubaidillah</strong>
-            </div>
+            <div><small>Designed by</small><strong>Lucky Ubaidillah</strong></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ PROJECTS ░░ -->
+  <!-- PROJECTS -->
   <section id="projects" class="projects">
     <div class="section-container">
       <div class="section-header reveal">
@@ -311,145 +396,74 @@
         <p class="section-desc">Proyek yang telah diselesaikan selama belajar sebagai mahasiswa PPLG</p>
       </div>
 
-      <div class="projects-grid">
+      <!-- Filter -->
+      <div class="filter-wrap reveal">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-border-all"></i> All</button>
+        <button class="filter-btn" data-filter="web-app"><i class="fas fa-globe"></i> Web App</button>
+        <button class="filter-btn" data-filter="react"><i class="fab fa-react"></i> React</button>
+        <button class="filter-btn" data-filter="laravel"><i class="fab fa-laravel"></i> Laravel</button>
+      </div>
 
-        <!-- CARD 1 -->
-        <div class="pcard reveal">
+      <div class="projects-grid" id="projectsGrid">
+        <div class="pcard reveal" data-category="web-app">
           <div class="pcard-preview">
-            <img src="image/webPorto.png" alt="Web Portfolio" loading="lazy"
-              onerror="this.style.display='none';" />
-            <div class="pcard-browser">
-              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
-            </div>
+            <img src="image/webPorto.png" alt="Web Portfolio" loading="lazy" onerror="this.style.display='none';" />
+            <div class="pcard-browser"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
             <div class="pcard-type">Web App</div>
-            <div class="pcard-hover">
-              <a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank">View Code</a>
-              <a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank">Live Demo</a>
-            </div>
+            <div class="pcard-hover"><a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank">View Code</a><a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank">Live Demo</a></div>
           </div>
           <div class="pcard-body">
-            <div class="pcard-top">
-              <h3>Web Portofolio</h3>
-              <div class="pcard-links">
-                <a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
+            <div class="pcard-top"><h3>Web Portofolio</h3><div class="pcard-links"><a href="https://github.com/luckytrusted8-svg/Portofolio" target="_blank"><i class="fab fa-github"></i></a><a href="https://luckytrusted8-svg.github.io/Portofolio/" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></div>
             <p>Website portofolio pribadi dengan desain modern, navigasi responsif, dan user-friendly.</p>
-            <div class="pcard-tags">
-              <span class="tag t-html">HTML</span>
-              <span class="tag t-css">CSS</span>
-            </div>
-            <div class="pcard-chips">
-              <span>Responsive</span><span>Flexbox</span><span>Animations</span><span>Mobile First</span>
-            </div>
+            <div class="pcard-tags"><span class="tag t-html">HTML</span><span class="tag t-css">CSS</span><span class="tag t-js">JavaScript</span></div>
+            <div class="pcard-chips"><span>Responsive</span><span>Flexbox</span><span>Animations</span><span>Mobile First</span></div>
           </div>
         </div>
 
-        <!-- CARD 2 -->
-        <div class="pcard reveal" style="--d:.1s">
+        <div class="pcard reveal" style="--d:.1s" data-category="react">
           <div class="pcard-preview">
-            <img src="image/web-Ecommerce.png" alt="E-Commerce" loading="lazy"
-              onerror="this.style.display='none';" />
-            <div class="pcard-browser">
-              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
-            </div>
+            <img src="image/web-Ecommerce.png" alt="E-Commerce" loading="lazy" onerror="this.style.display='none';" />
+            <div class="pcard-browser"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
             <div class="pcard-type">React App</div>
-            <div class="pcard-hover">
-              <a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank">View Code</a>
-              <a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank">Live Demo</a>
-            </div>
+            <div class="pcard-hover"><a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank">View Code</a><a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank">Live Demo</a></div>
           </div>
           <div class="pcard-body">
-            <div class="pcard-top">
-              <h3>LuckyStore — E-Commerce</h3>
-              <div class="pcard-links">
-                <a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
+            <div class="pcard-top"><h3>LuckyStore — E-Commerce</h3><div class="pcard-links"><a href="https://github.com/luckytrusted8-svg/E-commerce.mini" target="_blank"><i class="fab fa-github"></i></a><a href="https://luckytrusted8-svg.github.io/E-commerce.mini/" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></div>
             <p>Frontend e-commerce dengan katalog produk, keranjang belanja, dan antarmuka modern.</p>
-            <div class="pcard-tags">
-              <span class="tag t-react">React.js</span>
-              <span class="tag t-tailwind">Tailwind</span>
-              <span class="tag t-js">JavaScript</span>
-              <span class="tag t-vite">Vite</span>
-            </div>
-            <div class="pcard-chips">
-              <span>Product Filter</span><span>Context API</span><span>Checkout</span>
-            </div>
+            <div class="pcard-tags"><span class="tag t-react">React.js</span><span class="tag t-tailwind">Tailwind</span><span class="tag t-js">JavaScript</span><span class="tag t-vite">Vite</span></div>
+            <div class="pcard-chips"><span>Product Filter</span><span>Context API</span><span>Checkout</span></div>
           </div>
         </div>
 
-        <!-- CARD 3 -->
-        <div class="pcard reveal" style="--d:.2s">
+        <div class="pcard reveal" style="--d:.2s" data-category="web-app">
           <div class="pcard-preview">
-            <img src="image/webComproGPEST.png" alt="GPEST" loading="lazy"
-              onerror="this.style.display='none';" />
-            <div class="pcard-browser">
-              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
-            </div>
+            <img src="image/webComproGPEST.png" alt="GPEST" loading="lazy" onerror="this.style.display='none';" />
+            <div class="pcard-browser"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
             <div class="pcard-type">Web App</div>
-            <div class="pcard-hover">
-              <a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank">View Code</a>
-              <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank">Live Demo</a>
-            </div>
+            <div class="pcard-hover"><a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank">View Code</a><a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank">Live Demo</a></div>
           </div>
           <div class="pcard-body">
-            <div class="pcard-top">
-              <h3>Web Compro — GPEST</h3>
-              <div class="pcard-links">
-                <a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
+            <div class="pcard-top"><h3>Web Compro — GPEST</h3><div class="pcard-links"><a href="https://github.com/luckytrusted8-svg/gpest.company.profile" target="_blank"><i class="fab fa-github"></i></a><a href="https://luckytrusted8-svg.github.io/gpest.company.profile/" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></div>
             <p>Company profile GPEST untuk layanan pengendalian hama, memudahkan pelanggan mengakses info dan kontak.</p>
-            <div class="pcard-tags">
-              <span class="tag t-html">HTML</span>
-              <span class="tag t-css">CSS</span>
-              <span class="tag t-js">JavaScript</span>
-            </div>
-            <div class="pcard-chips">
-              <span>Hero Section</span><span>Services Grid</span><span>Contact UI</span>
-            </div>
+            <div class="pcard-tags"><span class="tag t-html">HTML</span><span class="tag t-css">CSS</span><span class="tag t-js">JavaScript</span></div>
+            <div class="pcard-chips"><span>Hero Section</span><span>Services Grid</span><span>Contact UI</span></div>
           </div>
         </div>
 
-        <!-- CARD 4 -->
-        <div class="pcard reveal" style="--d:.3s">
+        <div class="pcard reveal" style="--d:.3s" data-category="laravel">
           <div class="pcard-preview">
-            <img src="image/ProjectPos.png" alt="POS App" loading="lazy"
-              onerror="this.style.display='none';" />
-            <div class="pcard-browser">
-              <span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span>
-            </div>
+            <img src="image/ProjectPos.png" alt="POS App" loading="lazy" onerror="this.style.display='none';" />
+            <div class="pcard-browser"><span class="bd red"></span><span class="bd yellow"></span><span class="bd green"></span></div>
             <div class="pcard-type">Laravel App</div>
-            <div class="pcard-hover">
-              <a href="https://github.com/zynly/pos-app" target="_blank">View Code</a>
-              <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank">Live Demo</a>
-            </div>
+            <div class="pcard-hover"><a href="https://github.com/zynly/pos-app" target="_blank">View Code</a><a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank">Live Demo</a></div>
           </div>
           <div class="pcard-body">
-            <div class="pcard-top">
-              <h3>POS — Point of Sales</h3>
-              <div class="pcard-links">
-                <a href="https://github.com/zynly/pos-app" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div>
-            <p>Aplikasi POS berbasis web dengan Laravel & Filament untuk transaksi, stok, dan laporan otomatis.</p>
-            <div class="pcard-tags">
-              <span class="tag t-laravel">Laravel</span>
-              <span class="tag t-php">PHP</span>
-              <span class="tag t-mysql">MySQL</span>
-              <span class="tag t-js">JS</span>
-            </div>
-            <div class="pcard-chips">
-              <span>Produk</span><span>Transaksi</span><span>Stok</span><span>Dashboard</span><span>Laporan</span>
-            </div>
+            <div class="pcard-top"><h3>POS — Point of Sales</h3><div class="pcard-links"><a href="https://github.com/zynly/pos-app" target="_blank"><i class="fab fa-github"></i></a><a href="https://bisque-narwhal-582244.hostingersite.com/" target="_blank"><i class="fas fa-external-link-alt"></i></a></div></div>
+            <p>Aplikasi POS berbasis web dengan Laravel &amp; Filament untuk transaksi, stok, dan laporan otomatis.</p>
+            <div class="pcard-tags"><span class="tag t-laravel">Laravel</span><span class="tag t-php">PHP</span><span class="tag t-mysql">MySQL</span><span class="tag t-js">JavaScript</span><span class="tag t-tailwind">Tailwind</span></div>
+            <div class="pcard-chips"><span>Produk</span><span>Transaksi</span><span>Stok</span><span>Dashboard</span><span>Laporan</span></div>
           </div>
         </div>
-
       </div>
 
       <div class="projects-more reveal">
@@ -460,52 +474,114 @@
     </div>
   </section>
 
-  <!-- ░░ TOOLS ░░ -->
-  <section id="tools" class="tools-section">
+  <!-- TESTIMONIAL -->
+  <section id="testimonial" class="testimonial-section">
     <div class="section-container">
       <div class="section-header reveal">
-        <span class="section-label">Expertise</span>
-        <h2 class="section-title">Tools & <em>Technologies</em></h2>
+        <span class="section-label">Feedback</span>
+        <h2 class="section-title">Apa Kata <em>Mereka</em></h2>
+        <p class="section-desc">Feedback dari teman, guru, dan kolaborator</p>
       </div>
-
-      <div class="tools-grid reveal">
-        <div class="tool-item">
-          <i class="fab fa-html5" style="color:#E34F26;"></i>
-          <span>HTML5</span>
+      <div class="testimonial-grid">
+        <div class="testi-card reveal" style="--d:0s">
+          <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+          <p class="testi-text">Lucky adalah teman yang sangat kooperatif dalam tim. Ia selalu berkontribusi dengan ide-ide segar dalam desain UI dan tidak pernah ragu untuk membantu rekan lainnya.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TM</div>
+            <div><strong>Teman Sekelas</strong><span>SMK Skill Village</span></div>
+          </div>
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         </div>
-        <div class="tool-item">
-          <i class="fab fa-css3-alt" style="color:#1572B6;"></i>
-          <span>CSS3</span>
+        <div class="testi-card reveal" style="--d:.15s">
+          <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+          <p class="testi-text">Hasil kerja Lucky pada project POS sangat memuaskan. Ia mampu memahami kebutuhan sistem dengan cepat dan mengimplementasikannya dengan rapi menggunakan Laravel.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">KL</div>
+            <div><strong>Kolaborator Project</strong><span>POS App Team</span></div>
+          </div>
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         </div>
-        <div class="tool-item">
-          <i class="fab fa-js" style="color:#F7DF1E;"></i>
-          <span>JavaScript</span>
-        </div>
-        <div class="tool-item">
-          <i class="fab fa-react" style="color:#61DAFB;"></i>
-          <span>React.js</span>
-        </div>
-        <div class="tool-item">
-          <i class="fab fa-laravel" style="color:#FF2D20;"></i>
-          <span>Laravel</span>
-        </div>
-        <div class="tool-item">
-          <i class="fab fa-php" style="color:#8892BE;"></i>
-          <span>PHP</span>
-        </div>
-        <div class="tool-item">
-          <i class="fas fa-database" style="color:#4479A1;"></i>
-          <span>MySQL</span>
-        </div>
-        <div class="tool-item">
-          <i class="fab fa-figma" style="color:#F24E1E;"></i>
-          <span>Figma</span>
+        <div class="testi-card reveal" style="--d:.3s">
+          <div class="testi-quote"><i class="fas fa-quote-left"></i></div>
+          <p class="testi-text">Lucky menunjukkan dedikasi luar biasa dalam belajar. Ia aktif mengeksplorasi teknologi baru dan selalu berusaha menghasilkan karya terbaik dalam setiap project yang diberikan.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">GR</div>
+            <div><strong>Guru / Mentor</strong><span>Skill Village Islamic School</span></div>
+          </div>
+          <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ CONTACT ░░ -->
+  <!-- TOOLS -->
+  <section id="tools" class="tools-section">
+    <div class="section-container">
+      <div class="section-header reveal"><span class="section-label">Expertise</span><h2 class="section-title">Tools &amp; <em>Technologies</em></h2></div>
+      <div class="tools-grid reveal">
+        <div class="tool-item"><i class="fab fa-html5" style="color:#E34F26;"></i><span>HTML5</span></div>
+        <div class="tool-item"><i class="fab fa-css3-alt" style="color:#1572B6;"></i><span>CSS3</span></div>
+        <div class="tool-item"><i class="fab fa-js" style="color:#F7DF1E;"></i><span>JavaScript</span></div>
+        <div class="tool-item"><i class="fab fa-react" style="color:#61DAFB;"></i><span>React.js</span></div>
+        <div class="tool-item"><i class="fab fa-laravel" style="color:#FF2D20;"></i><span>Laravel</span></div>
+        <div class="tool-item"><i class="fab fa-php" style="color:#8892BE;"></i><span>PHP</span></div>
+        <div class="tool-item"><i class="fas fa-database" style="color:#4479A1;"></i><span>MySQL</span></div>
+        <div class="tool-item"><i class="fab fa-figma" style="color:#F24E1E;"></i><span>Figma</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="blog-section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <span class="section-label">Notes</span>
+        <h2 class="section-title">Blog &amp; <em>Catatan</em></h2>
+        <p class="section-desc">Tulisan singkat tentang hal-hal yang saya pelajari</p>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal" style="--d:0s">
+          <div class="blog-card-img">
+            <div class="blog-card-img-bg" style="--c1:#5b8dee;--c2:#a78bfa;"><i class="fab fa-react"></i></div>
+            <span class="blog-tag">React.js</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 15 Nov 2024</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
+            <h3>Belajar Context API di React: Alternatif Redux yang Lebih Simpel</h3>
+            <p>Context API adalah fitur bawaan React yang memungkinkan kita berbagi state ke seluruh komponen tanpa prop drilling yang rumit...</p>
+            <a href="#" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="blog-card reveal" style="--d:.15s">
+          <div class="blog-card-img">
+            <div class="blog-card-img-bg" style="--c1:#f59e0b;--c2:#ef4444;"><i class="fas fa-palette"></i></div>
+            <span class="blog-tag">UI/UX</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 3 Des 2024</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
+            <h3>Prinsip Dasar UI Design yang Wajib Dipahami Pemula</h3>
+            <p>Desain UI yang baik bukan hanya soal tampilan cantik, tapi juga tentang bagaimana pengguna berinteraksi dengan antarmuka yang kita buat...</p>
+            <a href="#" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="blog-card reveal" style="--d:.3s">
+          <div class="blog-card-img">
+            <div class="blog-card-img-bg" style="--c1:#10b981;--c2:#0ea5e9;"><i class="fab fa-laravel"></i></div>
+            <span class="blog-tag">Laravel</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 20 Jan 2025</span><span><i class="fas fa-clock"></i> 6 min read</span></div>
+            <h3>Membangun Aplikasi POS dengan Laravel Filament: Pengalaman Pertama</h3>
+            <p>Filament adalah admin panel builder untuk Laravel yang sangat powerful. Dalam project POS ini, saya belajar bagaimana membangun CRUD yang kompleks...</p>
+            <a href="#" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+      <div class="blog-more reveal"><a href="#" class="btn-ghost"><i class="fas fa-pen-nib"></i> Lihat Semua Tulisan</a></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="section-container">
       <div class="section-header reveal">
@@ -513,58 +589,23 @@
         <h2 class="section-title">Let's <em>Connect</em></h2>
         <p class="section-desc">Tertarik berkolaborasi? Jangan ragu untuk menghubungi saya!</p>
       </div>
-
       <div class="contact-layout">
         <div class="contact-cta reveal">
           <h3>Siap untuk berkolaborasi<br />bersama?</h3>
           <p>Saya terbuka untuk project freelance, kolaborasi, maupun diskusi seputar teknologi dan desain.</p>
-          <a href="mailto:luckyubaidillah5@gmail.com" class="btn-primary">
-            Send Email <i class="fas fa-paper-plane"></i>
-          </a>
+          <a href="mailto:luckyubaidillah5@gmail.com" class="btn-primary">Send Email <i class="fas fa-paper-plane"></i></a>
         </div>
-
         <div class="contact-cards reveal reveal-delay">
-          <a href="https://wa.me/62895402889544" target="_blank" class="contact-card">
-            <div class="cc-icon" style="--c:#25D366"><i class="fab fa-whatsapp"></i></div>
-            <div class="cc-info">
-              <span>WhatsApp</span>
-              <strong>0895-4028-89544</strong>
-            </div>
-            <i class="fas fa-arrow-right cc-arrow"></i>
-          </a>
-
-          <a href="https://instagram.com/onlyluxky" target="_blank" class="contact-card">
-            <div class="cc-icon" style="--c:#E1306C"><i class="fab fa-instagram"></i></div>
-            <div class="cc-info">
-              <span>Instagram</span>
-              <strong>@onlyluxky</strong>
-            </div>
-            <i class="fas fa-arrow-right cc-arrow"></i>
-          </a>
-
-          <div class="contact-card" onclick="copyDiscord()" style="cursor:pointer;">
-            <div class="cc-icon" style="--c:#7289DA"><i class="fab fa-discord"></i></div>
-            <div class="cc-info">
-              <span>Discord</span>
-              <strong>LuckyTrusted17</strong>
-            </div>
-            <i class="fas fa-copy cc-arrow"></i>
-          </div>
-
-          <a href="mailto:luckyubaidillah5@gmail.com" class="contact-card">
-            <div class="cc-icon" style="--c:#FF6A00"><i class="fas fa-envelope"></i></div>
-            <div class="cc-info">
-              <span>Email</span>
-              <strong>luckyubaidillah5@gmail.com</strong>
-            </div>
-            <i class="fas fa-arrow-right cc-arrow"></i>
-          </a>
+          <a href="https://wa.me/62895402889544" target="_blank" class="contact-card"><div class="cc-icon" style="--c:#25D366"><i class="fab fa-whatsapp"></i></div><div class="cc-info"><span>WhatsApp</span><strong>0895-4028-89544</strong></div><i class="fas fa-arrow-right cc-arrow"></i></a>
+          <a href="https://instagram.com/onlyluxky" target="_blank" class="contact-card"><div class="cc-icon" style="--c:#E1306C"><i class="fab fa-instagram"></i></div><div class="cc-info"><span>Instagram</span><strong>@onlyluxky</strong></div><i class="fas fa-arrow-right cc-arrow"></i></a>
+          <div class="contact-card" onclick="copyDiscord()" style="cursor:pointer;"><div class="cc-icon" style="--c:#7289DA"><i class="fab fa-discord"></i></div><div class="cc-info"><span>Discord</span><strong>LuckyTrusted17</strong></div><i class="fas fa-copy cc-arrow"></i></div>
+          <a href="mailto:luckyubaidillah5@gmail.com" class="contact-card"><div class="cc-icon" style="--c:#FF6A00"><i class="fas fa-envelope"></i></div><div class="cc-info"><span>Email</span><strong>luckyubaidillah5@gmail.com</strong></div><i class="fas fa-arrow-right cc-arrow"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░ FOOTER ░░ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-logo">Lucky<span>.U</span></span>
@@ -576,9 +617,33 @@
     </div>
   </footer>
 
-  <!-- ░░ TOAST ░░ -->
+  <!-- TOAST -->
   <div class="toast" id="toast">Discord username disalin! 🎮</div>
 
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">
+    <svg class="btt-ring" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+      <circle class="btt-ring-track" cx="20" cy="20" r="17" />
+      <circle class="btt-ring-fill" cx="20" cy="20" r="17" id="bttRingFill" />
+    </svg>
+    <i class="fas fa-arrow-up btt-icon"></i>
+  </button>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-backdrop" id="lbBackdrop"></div>
+    <button class="lb-close" id="lbClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Sebelumnya"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Berikutnya"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-img-wrap">
+      <img src="" alt="" id="lbImg" class="lb-img" />
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+    <div class="lb-dots" id="lbDots"></div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="theme.js"></script>
+  <script src="features.js"></script>
 </body>
 </html>

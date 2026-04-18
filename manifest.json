@@ -1,0 +1,33 @@
+{
+  "name": "Lucky Ubaidillah — Developer & Designer",
+  "short_name": "Lucky.U",
+  "description": "Portofolio Lucky Ubaidillah — Developer & Designer, Mahasiswa PPLG Skill Village Islamic School.",
+  "start_url": "/Portofolio/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "logo-lu.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo-lu.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "image/lucky.jpeg",
+      "sizes": "400x400",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["portfolio", "developer", "design"],
+  "lang": "id"
+}
