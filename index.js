@@ -590,3 +590,151 @@ self.addEventListener('fetch', function (event) {
     })
   );
 });
+
+(function() {
+    // ── Avatar gradient pool
+    const GRAD = [
+      'linear-gradient(135deg,#5b8dee,#7c5fe8)',
+      'linear-gradient(135deg,#E1306C,#833ab4)',
+      'linear-gradient(135deg,#10b981,#0ea5e9)',
+      'linear-gradient(135deg,#f59e0b,#ef4444)',
+      'linear-gradient(135deg,#a78bfa,#60a5fa)',
+      'linear-gradient(135deg,#34d399,#3b82f6)',
+    ];
+    let gradIdx = 3;
+ 
+    // ── Default / pinned comment
+    let cnComments = [
+      {
+        id: 0,
+        name: 'Lucky Ubaidillah',
+        admin: true,
+        pinned: true,
+        time: 'Apr 20, 2026',
+        msg: 'Thank you for visiting! If you have any questions, feel free to DM me on IG @onlyluxky',
+        photo: null,
+        initials: 'LU',
+        grad: 0
+      }
+    ];
+ 
+    // ── Load saved from localStorage
+    try {
+      const saved = JSON.parse(localStorage.getItem('lu_guestbook') || '[]');
+      cnComments = [cnComments[0], ...saved];
+    } catch(e) {}
+ 
+    let uploadedPhoto = null;
+ 
+    // ── Render
+    function render() {
+      const list  = document.getElementById('cnCommentsList');
+      const count = document.getElementById('cnCommentCount');
+      if(!list || !count) return;
+ 
+      count.textContent = cnComments.length;
+ 
+      const sorted = [...cnComments].sort((a,b)=>{
+        if(a.pinned&&!b.pinned) return -1;
+        if(!a.pinned&&b.pinned) return 1;
+        return b.id - a.id;
+      });
+ 
+      list.innerHTML = sorted.map(c=>`
+        <div class="cn-comment ${c.pinned?'cn-comment--pinned':''}">
+         
+          <div class="cn-avatar" style="${c.photo?'':'background:'+GRAD[c.grad%GRAD.length]}">
+            ${c.photo?`<img src="${c.photo}" alt="${esc(c.name)}" />`:`<span>${esc(c.initials)}</span>`}
+          </div>
+          <div class="cn-comment-body">
+            <div class="cn-comment-meta">
+              <strong class="cn-comment-name">${esc(c.name)}</strong>
+              ${c.admin?'<span class="cn-admin-tag">Admin</span>':''}
+              <span class="cn-comment-time">${c.time}</span>
+            </div>
+            <p class="cn-comment-text">${esc(c.msg)}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+ 
+    function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+ 
+    // ── Post comment
+    window.cnPostComment = function() {
+      const nameEl = document.getElementById('cn-cname');
+      const msgEl  = document.getElementById('cn-cmessage');
+      const name   = nameEl.value.trim();
+      const msg    = msgEl.value.trim();
+      if(!name){ cnShake(nameEl); return; }
+      if(!msg) { cnShake(msgEl);  return; }
+ 
+      const initials = name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2)||'??';
+      const newItem = {
+        id: Date.now(),
+        name, admin: false, pinned: false,
+        time: 'just now',
+        msg, photo: uploadedPhoto,
+        initials, grad: gradIdx++
+      };
+      cnComments.push(newItem);
+ 
+      // persist (skip pinned)
+      try { localStorage.setItem('lu_guestbook', JSON.stringify(cnComments.filter(c=>!c.pinned))); } catch(e){}
+ 
+      nameEl.value = '';
+      msgEl.value  = '';
+      uploadedPhoto = null;
+      document.getElementById('cnPhotoHint').textContent = 'Max file size: 5MB';
+ 
+      render();
+      document.getElementById('cnCommentsList').scrollTop = 9999;
+      cnToast('Komentar berhasil diposting! 🎉');
+    };
+ 
+    // ── Send contact message via WhatsApp
+    window.cnSendMessage = function() {
+      const name  = document.getElementById('cn-name').value.trim();
+      const email = document.getElementById('cn-email').value.trim();
+      const msg   = document.getElementById('cn-message').value.trim();
+      if(!name||!email||!msg){ cnToast('Harap isi semua field terlebih dahulu!'); return; }
+      const text = `Halo Lucky!\n\nNama: ${name}\nEmail: ${email}\n\nPesan:\n${msg}`;
+      window.open('https://wa.me/62895402889544?text='+encodeURIComponent(text),'_blank');
+      document.getElementById('cn-name').value='';
+      document.getElementById('cn-email').value='';
+      document.getElementById('cn-message').value='';
+      cnToast('Membuka WhatsApp... 🚀');
+    };
+ 
+    // ── Photo upload preview
+    window.cnPreviewPhoto = function(input) {
+      const file = input.files[0]; if(!file) return;
+      if(file.size > 5*1024*1024){ cnToast('File terlalu besar! Maks 5MB.'); return; }
+      const reader = new FileReader();
+      reader.onload = e => {
+        uploadedPhoto = e.target.result;
+        document.getElementById('cnPhotoHint').innerHTML = `<span style="color:var(--accent)"><i class="fas fa-check"></i> ${file.name}</span>`;
+      };
+      reader.readAsDataURL(file);
+    };
+ 
+    // ── Toast
+    function cnToast(msg){
+      const t=document.getElementById('cnToast');
+      document.getElementById('cnToastMsg').textContent=msg;
+      t.classList.add('cn-toast--show');
+      setTimeout(()=>t.classList.remove('cn-toast--show'),3000);
+    }
+ 
+    // ── Shake invalid field
+    function cnShake(el){
+      el.style.borderColor='rgba(239,68,68,0.7)';
+      el.style.boxShadow='0 0 0 3px rgba(239,68,68,0.15)';
+      el.animate([{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}],{duration:350,easing:'ease'});
+      setTimeout(()=>{ el.style.borderColor=''; el.style.boxShadow=''; },1500);
+      el.focus();
+    }
+ 
+    // ── Init
+    render();
+  })();
