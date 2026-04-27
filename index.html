@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,19 +31,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="theme-mode.css" />
-  <link rel="stylesheet" href="about-new-addition.css" />
-  <link rel="stylesheet" href="features.css" />
-  <link rel="stylesheet" href="404.html">
-
-  <!-- Anti-flash -->
-  <script>
-    (function(){
-      var t=localStorage.getItem('lu-theme');
-      if(!t) t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';
-      document.documentElement.setAttribute('data-theme',t);
-    })();
-  </script>
   <script src="index.js" defer></script>
 </head>
 <body>
@@ -70,17 +57,9 @@
         <a href="#skills"     class="nav-link"        data-section="skills">Skills</a>
         <a href="#collection" class="nav-link"        data-section="collection">Design</a>
         <a href="#projects"   class="nav-link"        data-section="projects">Projects</a>
-        <a href="#blog"       class="nav-link"        data-section="blog">Blog</a>
+        <a href="#favorite"   class="nav-link"        data-section="favorite">Favorite</a>
         <a href="#contact"    class="nav-link"        data-section="contact">Contact</a>
       </nav>
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to Light Mode">
-        <div class="theme-toggle__track-icons">
-          <i class="fas fa-moon ti-moon"></i><i class="fas fa-sun ti-sun"></i>
-        </div>
-        <div class="theme-toggle__knob">
-          <i class="fas fa-moon icon-moon"></i><i class="fas fa-sun icon-sun"></i>
-        </div>
-      </button>
       <a href="https://wa.me/62895402889544" target="_blank" class="nav-cta">
         Hire Me <i class="fas fa-arrow-right"></i>
       </a>
@@ -94,19 +73,8 @@
       <a href="#skills"     class="mobile-link">Skills</a>
       <a href="#collection" class="mobile-link">Design</a>
       <a href="#projects"   class="mobile-link">Projects</a>
-      <a href="#blog"       class="mobile-link">Blog</a>
+      <a href="#favorite"   class="mobile-link">Favorite</a>
       <a href="#contact"    class="mobile-link">Contact</a>
-      <div class="mobile-theme-row">
-        <span id="mobileThemeLabel">Light Mode</span>
-        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle Theme">
-          <div class="theme-toggle__track-icons">
-            <i class="fas fa-moon ti-moon"></i><i class="fas fa-sun ti-sun"></i>
-          </div>
-          <div class="theme-toggle__knob">
-            <i class="fas fa-moon icon-moon"></i><i class="fas fa-sun icon-sun"></i>
-          </div>
-        </button>
-      </div>
     </div>
   </header>
 
@@ -138,8 +106,7 @@
           Membangun pengalaman digital yang menarik dan fungsional.
         </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn-primary">Lihat Projects <i class="fas fa-arrow-right"></i></a>
-          <a href="Lucky_Ubaidillah_CV.pdf" download class="btn-ghost btn-cv"><i class="fas fa-download"></i> Download CV</a>
+          <a href="CV-Lucky Ubaidillah (2).pdf" download class="btn-primary"><i class="fas fa-download"></i> Download CV</a>
           <a href="#about" class="btn-ghost">Tentang Saya</a>
         </div>
         <div class="hero-socials">
@@ -218,44 +185,43 @@
         </div>
       </div>
       <div class="abn-grid reveal reveal-delay">
-        <div class="abn-col">
-          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-laptop-code"></i></div><h4>Skill <span>Software</span></h4></div>
-          <ul class="abn-list">
-            <li><i class="fas fa-chevron-right"></i>Adobe Illustrator</li>
-            <li><i class="fas fa-chevron-right"></i>Adobe Photoshop</li>
-            <li><i class="fas fa-chevron-right"></i>Figma</li>
-            <li><i class="fas fa-chevron-right"></i>Canva</li>
-            <li><i class="fas fa-chevron-right"></i>VS Code</li>
+        <div class="abn-col abn-col--info">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-user-circle"></i></div><h4>Info <span>Pribadi</span></h4></div>
+          <ul class="abn-list abn-list--info">
+            <li><i class="fas fa-map-marker-alt"></i><span>Ciledug, Indonesia</span></li>
+            <li><i class="fas fa-graduation-cap"></i><span>SMK Skill Village Islamic School</span></li>
+            <li><i class="fas fa-language"></i><span>Bahasa Indonesia & English</span></li>
+            <li class="abn-email-row"><i class="fas fa-envelope"></i><span>luckyubaidillah5@gmail.com</span><button class="abn-copy-btn" onclick="copyEmail()" title="Copy email"><i class="fas fa-copy"></i></button></li>
           </ul>
         </div>
-        <div class="abn-col">
-          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-code"></i></div><h4>Hard <span>Skill</span></h4></div>
-          <ul class="abn-list">
-            <li><i class="fas fa-chevron-right"></i>Web Development</li>
-            <li><i class="fas fa-chevron-right"></i>UI/UX Design</li>
-            <li><i class="fas fa-chevron-right"></i>Responsive Design</li>
-            <li><i class="fas fa-chevron-right"></i>Database (MySQL)</li>
-            <li><i class="fas fa-chevron-right"></i>Prototyping</li>
+        <div class="abn-col abn-col--services">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-briefcase"></i></div><h4>Layanan <span>Services</span></h4></div>
+          <ul class="abn-list abn-list--services">
+            <li><div class="abn-srv-icon"><i class="fas fa-code"></i></div><div class="abn-srv-text"><strong>Web Development</strong><span>Membangun website modern & responsif</span></div></li>
+            <li><div class="abn-srv-icon"><i class="fas fa-paint-brush"></i></div><div class="abn-srv-text"><strong>UI/UX Design</strong><span>Desain antarmuka yang user-friendly</span></div></li>
+            <li><div class="abn-srv-icon"><i class="fas fa-mobile-alt"></i></div><div class="abn-srv-text"><strong>Responsive Design</strong><span>Tampilan optimal di semua perangkat</span></div></li>
+            <li><div class="abn-srv-icon"><i class="fas fa-database"></i></div><div class="abn-srv-text"><strong>Database</strong><span>Manajemen data dengan MySQL</span></div></li>
           </ul>
         </div>
-        <div class="abn-col">
-          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-users"></i></div><h4>Soft <span>Skill</span></h4></div>
-          <ul class="abn-list">
-            <li><i class="fas fa-chevron-right"></i>Teamwork</li>
-            <li><i class="fas fa-chevron-right"></i>Communication</li>
-            <li><i class="fas fa-chevron-right"></i>Critical Thinking</li>
-            <li><i class="fas fa-chevron-right"></i>Time Management</li>
-            <li><i class="fas fa-chevron-right"></i>Problem Solving</li>
-          </ul>
+        <div class="abn-col abn-col--fun">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-star"></i></div><h4>Fun <span>Facts</span></h4></div>
+          <div class="abn-fun-grid">
+            <div class="abn-fun-item"><i class="fas fa-coffee"></i><span>Coffee Lover</span></div>
+            <div class="abn-fun-item"><i class="fas fa-music"></i><span>Music Enth</span></div>
+            <div class="abn-fun-item"><i class="fas fa-gamepad"></i><span>Gamer</span></div>
+            <div class="abn-fun-item"><i class="fas fa-moon"></i><span>Night Owl</span></div>
+            <div class="abn-fun-item"><i class="fas fa-bullseye"></i><span>Perfectionist</span></div>
+            <div class="abn-fun-item"><i class="fas fa-cat"></i><span>Cat Person</span></div>
+          </div>
         </div>
-        <div class="abn-col abn-col--contact">
-          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-share-nodes"></i></div><h4>Kontak <span>Sosial Media</span></h4></div>
-          <ul class="abn-list abn-list--contact">
-            <li><i class="fab fa-instagram"></i><a href="https://instagram.com/onlyluxky" target="_blank">@onlyluxky</a></li>
-            <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/62895402889544" target="_blank">0895-4028-89544</a></li>
-            <li><i class="fas fa-envelope"></i><a href="mailto:luckyubaidillah5@gmail.com">luckyubaidillah5@gmail.com</a></li>
-            <li><i class="fab fa-github"></i><a href="https://github.com/luckytrusted8-svg" target="_blank">luckytrusted8-svg</a></li>
-          </ul>
+        <div class="abn-col abn-col--learning">
+          <div class="abn-col-header"><div class="abn-col-icon"><i class="fas fa-rocket"></i></div><h4>Sedang <span>Dipelajari</span></h4></div>
+          <div class="abn-learning-list">
+            <div class="abn-learning-tag"><i class="fab fa-react"></i>Advanced React</div>
+            <div class="abn-learning-tag"><i class="fab fa-laravel"></i>Laravel Filament</div>
+            <div class="abn-learning-tag"><i class="fas fa-wind"></i>UI Motion</div>
+            <div class="abn-learning-tag"><i class="fas fa-code"></i>TypeScript</div>
+          </div>
         </div>
       </div>
     </div>
@@ -297,7 +263,7 @@
       <div class="timeline">
         <div class="tl-item tl-left reveal">
           <div class="tl-content">
-            <div class="tl-header"><span class="tl-tag tl-tag--edu">Pendidikan</span><span class="tl-year">2023 — Sekarang</span></div>
+            <div class="tl-header"><span class="tl-tag tl-tag--edu">Pendidikan</span><span class="tl-year">2025 — Sekarang</span></div>
             <h3>SMK Skill Village Islamic School</h3>
             <p class="tl-role">Siswa — Jurusan PPLG</p>
             <ul class="tl-list">
@@ -311,7 +277,7 @@
         <div class="tl-item tl-right reveal" style="--d:.1s">
           <div class="tl-dot"><i class="fas fa-code"></i></div>
           <div class="tl-content">
-            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2024</span></div>
+            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2026</span></div>
             <h3>Web Portofolio &amp; LuckyStore</h3>
             <p class="tl-role">Personal Project — Frontend Developer</p>
             <ul class="tl-list">
@@ -323,13 +289,13 @@
         </div>
         <div class="tl-item tl-left reveal" style="--d:.2s">
           <div class="tl-content">
-            <div class="tl-header"><span class="tl-tag tl-tag--collab">Kolaborasi</span><span class="tl-year">2024</span></div>
+            <div class="tl-header"><span class="tl-tag tl-tag--collab">Kolaborasi</span><span class="tl-year">2026</span></div>
             <h3>POS — Point of Sales App</h3>
             <p class="tl-role">Web Developer — Laravel &amp; Filament</p>
             <ul class="tl-list">
               <li>Berkolaborasi membangun aplikasi POS berbasis web</li>
               <li>Fitur produk, transaksi, stok, dan laporan otomatis</li>
-              <li>Deploy ke Hostinger</li>
+              <li>Deploy ke Filezilla</li>
             </ul>
           </div>
           <div class="tl-dot"><i class="fas fa-store"></i></div>
@@ -337,7 +303,7 @@
         <div class="tl-item tl-right reveal" style="--d:.3s">
           <div class="tl-dot"><i class="fas fa-building"></i></div>
           <div class="tl-content">
-            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2024</span></div>
+            <div class="tl-header"><span class="tl-tag tl-tag--project">Project</span><span class="tl-year">2026</span></div>
             <h3>Web Company Profile — GPEST</h3>
             <p class="tl-role">Frontend Developer — HTML/CSS/JS</p>
             <ul class="tl-list">
@@ -403,6 +369,7 @@
         <button class="filter-btn" data-filter="web-app"><i class="fas fa-globe"></i> Web App</button>
         <button class="filter-btn" data-filter="react"><i class="fab fa-react"></i> React</button>
         <button class="filter-btn" data-filter="laravel"><i class="fab fa-laravel"></i> Laravel</button>
+        <button class="filter-btn" data-filter="certificate"><i class="fas fa-certificate"></i> Sertifikat</button>
       </div>
 
       <div class="projects-grid" id="projectsGrid">
@@ -463,6 +430,31 @@
             <p>Aplikasi POS berbasis web dengan Laravel &amp; Filament untuk transaksi, stok, dan laporan otomatis.</p>
             <div class="pcard-tags"><span class="tag t-laravel">Laravel</span><span class="tag t-php">PHP</span><span class="tag t-mysql">MySQL</span><span class="tag t-js">JavaScript</span><span class="tag t-tailwind">Tailwind</span></div>
             <div class="pcard-chips"><span>Produk</span><span>Transaksi</span><span>Stok</span><span>Dashboard</span><span>Laporan</span></div>
+          </div>
+        </div>
+
+        <!-- Certificate Cards -->
+        <div class="pcard reveal cert-card" style="--d:.4s" data-category="certificate">
+          <div class="pcard-preview cert-preview lb-trigger" data-src="image/Sertifikat/Frond-end.png" data-caption="Sertifikat Pelatihan Web Development">
+            <img src="image/Sertifikat/Frond-end.png" alt="Sertifikat 1" loading="lazy" onerror="this.src='image/logo-lu.jpeg';this.style.objectFit='contain';this.style.padding='20px';this.style.background='var(--bg2)';" />
+            <div class="pcard-type cert-badge">Sertifikat</div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top"><h3>Sertifikat Frond-end Beginner</h3></div>
+            <p>Sertifikat kompetensi pembuatan web dengan tampilan yang user freandly dan membangun website modern.</p>
+            <div class="pcard-tags"><span class="tag t-html">HTML</span><span class="tag t-css">CSS</span><span class="tag t-js">JS</span></div>
+          </div>
+        </div>
+
+        <div class="pcard reveal cert-card" style="--d:.5s" data-category="certificate">
+          <div class="pcard-preview cert-preview lb-trigger" data-src="image/Sertifikat/Laravel-Filament.png" data-caption="Sertifikat UI/UX Design">
+            <img src="image/Sertifikat/Laravel-Filament.png" alt="Sertifikat 2" loading="lazy" onerror="this.src='image/logo-lu.jpeg';this.style.objectFit='contain';this.style.padding='20px';this.style.background='var(--bg2)';" />
+            <div class="pcard-type cert-badge">Sertifikat</div>
+          </div>
+          <div class="pcard-body">
+            <div class="pcard-top"><h3>Sertifikat UI/UX Design</h3></div>
+            <p>Sertifikat kompetensi membuat projek dengan laravel dan filament sebagai framework dan variant.</p>
+            <div class="pcard-tags"><span class="tag t-react" style="background:rgba(245,158,11,0.12);color:#fbbf24;">Laravel</span><span class="tag t-css" style="background:rgba(167,139,250,0.12);color:#a78bfa;">DataBase</span></div>
           </div>
         </div>
       </div>
@@ -532,53 +524,80 @@
     </div>
   </section>
 
-  <!-- BLOG -->
-  <section id="blog" class="blog-section">
+  <!-- FAVORITE / MUSIC PLAYLIST -->
+  <section id="favorite" class="favorite-section">
     <div class="section-container">
       <div class="section-header reveal">
-        <span class="section-label">Notes</span>
-        <h2 class="section-title">Blog &amp; <em>Catatan</em></h2>
-        <p class="section-desc">Tulisan singkat tentang hal-hal yang saya pelajari</p>
+        <span class="section-label">Playlist</span>
+        <h2 class="section-title">Favorite <em>Songs</em></h2>
+        <p class="section-desc">Koleksi lagu favorit saya — putar dan nikmati</p>
       </div>
-      <div class="blog-grid">
-        <article class="blog-card reveal" style="--d:0s">
-          <div class="blog-card-img">
-            <div class="blog-card-img-bg" style="--c1:#5b8dee;--c2:#a78bfa;"><i class="fab fa-react"></i></div>
-            <span class="blog-tag">React.js</span>
+      <div class="music-player-wrap reveal">
+        <!-- Audio element -->
+        <audio id="audioPlayer" preload="metadata"></audio>
+
+        <!-- Player Card -->
+        <div class="music-player">
+          <div class="music-album-art" id="albumArt">
+            <div class="album-disc" id="albumDisc">
+              <img id="albumImg" src="" alt="Album Art" class="album-img" />
+            </div>
+            <div class="album-glow"></div>
           </div>
-          <div class="blog-card-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 15 Nov 2024</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
-            <h3>Belajar Context API di React: Alternatif Redux yang Lebih Simpel</h3>
-            <p>Context API adalah fitur bawaan React yang memungkinkan kita berbagi state ke seluruh komponen tanpa prop drilling yang rumit...</p>
-            <a href="404.html" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          <div class="music-info">
+            <h3 id="musicTitle">Locked Out Of Heaven</h3>
+            <p id="musicArtist">Bruno Mars</p>
           </div>
-        </article>
-        <article class="blog-card reveal" style="--d:.15s">
-          <div class="blog-card-img">
-            <div class="blog-card-img-bg" style="--c1:#f59e0b;--c2:#ef4444;"><i class="fas fa-palette"></i></div>
-            <span class="blog-tag">UI/UX</span>
+          <div class="music-progress-wrap">
+            <span id="currentTime">0:00</span>
+            <div class="music-progress-bar" id="progressBar">
+              <div class="music-progress-fill" id="progressFill"></div>
+              <div class="music-progress-handle" id="progressHandle"></div>
+            </div>
+            <span id="totalTime">0:00</span>
           </div>
-          <div class="blog-card-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 3 Des 2024</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
-            <h3>Prinsip Dasar UI Design yang Wajib Dipahami Pemula</h3>
-            <p>Desain UI yang baik bukan hanya soal tampilan cantik, tapi juga tentang bagaimana pengguna berinteraksi dengan antarmuka yang kita buat...</p>
-            <a href="404.html" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          <div class="music-controls">
+            <button class="music-btn" id="shuffleBtn" title="Shuffle"><i class="fas fa-random"></i></button>
+            <button class="music-btn" id="prevBtn" title="Previous"><i class="fas fa-step-backward"></i></button>
+            <button class="music-btn music-play" id="playBtn" title="Play/Pause"><i class="fas fa-play"></i></button>
+            <button class="music-btn" id="nextBtn" title="Next"><i class="fas fa-step-forward"></i></button>
+            <button class="music-btn" id="repeatBtn" title="Repeat"><i class="fas fa-redo"></i></button>
           </div>
-        </article>
-        <article class="blog-card reveal" style="--d:.3s">
-          <div class="blog-card-img">
-            <div class="blog-card-img-bg" style="--c1:#10b981;--c2:#0ea5e9;"><i class="fab fa-laravel"></i></div>
-            <span class="blog-tag">Laravel</span>
+          <div class="music-volume">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" />
+            <i class="fas fa-volume-up"></i>
           </div>
-          <div class="blog-card-body">
-            <div class="blog-meta"><span><i class="fas fa-calendar-alt"></i> 20 Jan 2025</span><span><i class="fas fa-clock"></i> 6 min read</span></div>
-            <h3>Membangun Aplikasi POS dengan Laravel Filament: Pengalaman Pertama</h3>
-            <p>Filament adalah admin panel builder untuk Laravel yang sangat powerful. Dalam project POS ini, saya belajar bagaimana membangun CRUD yang kompleks...</p>
-            <a href="404.html" class="blog-read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist-wrap">
+          <div class="playlist-header"><i class="fas fa-list-music"></i> Playlist <span id="playlistCount">2 lagu</span></div>
+          <ul class="playlist" id="playlist">
+            <li class="playlist-item active" data-index="0">
+              <span class="pl-num">1</span>
+              <div class="pl-info">
+                <strong>Locked Out Of Heaven</strong>
+                <span>Bruno Mars</span>
+              </div>
+              <span class="pl-duration">3:53</span>
+              <span class="pl-playing"><i class="fas fa-volume-up"></i></span>
+            </li>
+            <li class="playlist-item" data-index="1">
+              <span class="pl-num">2</span>
+              <div class="pl-info">
+                <strong>Perfect</strong>
+                <span>One Direction</span>
+              </div>
+              <span class="pl-duration">3:50</span>
+              <span class="pl-playing"><i class="fas fa-volume-up"></i></span>
+            </li>
+          </ul>
+          <div class="playlist-tip">
+            <i class="fas fa-info-circle"></i> <strong>Edit Musik:</strong> Tambah/hapus lagu dengan mengedit array <code>songs</code> di file <code>index.js</code>. Setiap lagu memiliki properti <code>title</code>, <code>artist</code>, <code>src</code>, <code>cover</code>, dan <code>duration</code>.
           </div>
-        </article>
+        </div>
       </div>
-      <div class="blog-more reveal"><a href="404.html" class="btn-ghost"><i class="fas fa-pen-nib"></i> Lihat Semua Tulisan</a></div>
     </div>
   </section>
 
@@ -758,8 +777,5 @@
     <span id="cnToastMsg">Berhasil!</span>
   </div>
 
-  <script src="script.js"></script>
-  <script src="theme.js"></script>
-  <script src="features.js"></script>
 </body>
 </html>

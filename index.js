@@ -107,6 +107,19 @@ function copyDiscord() {
   });
 }
 
+// ── COPY EMAIL ────────────────────────
+function copyEmail() {
+  navigator.clipboard.writeText('luckyubaidillah5@gmail.com').then(() => {
+    const toast = document.getElementById('toast');
+    toast.textContent = 'Email disalin! 📋';
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => { toast.textContent = 'Discord username disalin! 🎮'; }, 400);
+    }, 3000);
+  });
+}
+
 /* ═══════════════════════════════════════════════════
    THEME TOGGLE — Lucky Ubaidillah Portfolio
    Tambahkan kode ini ke script.js kamu,
@@ -507,6 +520,167 @@ function copyDiscord() {
 })();
 
 /* ═══════════════════════════════════════════════════
+   MUSIC PLAYER — Playlist & Controls
+   Ganti lagu sesukamu di array `songs` di bawah ini!
+   ═══════════════════════════════════════════════════ */
+
+(function () {
+  'use strict';
+
+  /* ── GANTI LAGU DI SINI ── */
+  var songs = [
+    {
+      title: 'Locked Out Of Heaven',
+      artist: 'Bruno Mars',
+      src: 'audio/Bruno Mars - Locked Out Of Heaven.mp3',
+      duration: '3:53'
+    },
+    {
+      title: 'Perfect',
+      artist: 'One Direction',
+      src: 'audio/One Direction - Perfect.mp3',
+      duration: '3:50'
+    }
+    // Tambah lagu baru di bawah sini:
+    // { title: 'Judul', artist: 'Artis', src: 'audio/file.mp3', duration: '3:00' },
+  ];
+
+  var audio        = document.getElementById('audioPlayer');
+  var playBtn      = document.getElementById('musicPlay');
+  var prevBtn      = document.getElementById('musicPrev');
+  var nextBtn      = document.getElementById('musicNext');
+  var progressBar  = document.getElementById('musicProgressBar');
+  var progressFill = document.getElementById('musicProgressFill');
+  var progressHandle = document.getElementById('musicProgressHandle');
+  var currentTimeEl = document.getElementById('musicCurrentTime');
+  var totalTimeEl   = document.getElementById('musicTotalTime');
+  var volumeSlider  = document.getElementById('musicVolume');
+  var disc          = document.getElementById('albumDisc');
+  var songTitle     = document.getElementById('musicTitle');
+  var songArtist    = document.getElementById('musicArtist');
+  var playlistEl    = document.getElementById('playlist');
+
+  if (!audio) return; // Section tidak ada di halaman
+
+  var currentIndex = 0;
+  var isPlaying    = false;
+
+  function loadSong(index) {
+    currentIndex = index;
+    var s = songs[index];
+    audio.src = s.src;
+    if (songTitle)  songTitle.textContent  = s.title;
+    if (songArtist) songArtist.textContent = s.artist;
+    if (totalTimeEl) totalTimeEl.textContent = s.duration || '--:--';
+    renderPlaylist();
+    if (isPlaying) {
+      audio.play().catch(function(){});
+      if (disc) disc.classList.add('spin');
+    }
+  }
+
+  function togglePlay() {
+    if (!audio.src) loadSong(currentIndex);
+    if (audio.paused) {
+      audio.play().catch(function(){});
+      isPlaying = true;
+      if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
+      if (disc) disc.classList.add('spin');
+    } else {
+      audio.pause();
+      isPlaying = false;
+      if (playBtn) { playBtn.innerHTML = '<i class="fas fa-play"></i>'; }
+      if (disc) disc.classList.remove('spin');
+    }
+  }
+
+  function nextSong() {
+    currentIndex = (currentIndex + 1) % songs.length;
+    loadSong(currentIndex);
+    isPlaying = true;
+    if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
+  }
+
+  function prevSong() {
+    currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+    loadSong(currentIndex);
+    isPlaying = true;
+    if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
+  }
+
+  function updateProgress() {
+    if (!audio.duration) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    if (progressFill) progressFill.style.width = pct + '%';
+    if (progressHandle) progressHandle.style.left = pct + '%';
+    if (currentTimeEl) {
+      var m = Math.floor(audio.currentTime / 60);
+      var sec = Math.floor(audio.currentTime % 60);
+      currentTimeEl.textContent = m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+  }
+
+  function seek(e) {
+    if (!audio.duration || !progressBar) return;
+    var rect = progressBar.getBoundingClientRect();
+    var pct  = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    audio.currentTime = pct * audio.duration;
+    updateProgress();
+  }
+
+  function renderPlaylist() {
+    if (!playlistEl) return;
+    playlistEl.innerHTML = songs.map(function(s, i) {
+      var active = i === currentIndex ? 'active' : '';
+      return (
+        '<li class="playlist-item ' + active + '" data-index="' + i + '">' +
+          '<span class="pl-num">' + (i + 1) + '</span>' +
+          '<div class="pl-info"><strong>' + s.title + '</strong><span>' + s.artist + '</span></div>' +
+          '<span class="pl-duration">' + (s.duration || '--:--') + '</span>' +
+          '<span class="pl-playing"><i class="fas fa-volume-up"></i></span>' +
+        '</li>'
+      );
+    }).join('');
+
+    playlistEl.querySelectorAll('.playlist-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        var idx = parseInt(item.getAttribute('data-index'), 10);
+        loadSong(idx);
+        isPlaying = true;
+        if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
+        if (disc) disc.classList.add('spin');
+      });
+    });
+  }
+
+  // Events
+  if (playBtn) playBtn.addEventListener('click', togglePlay);
+  if (prevBtn) prevBtn.addEventListener('click', prevSong);
+  if (nextBtn) nextBtn.addEventListener('click', nextSong);
+  if (audio) {
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('ended', nextSong);
+  }
+  if (progressBar) {
+    progressBar.addEventListener('click', seek);
+  }
+  if (volumeSlider) {
+    volumeSlider.value = 0.8;
+    audio.volume = 0.8;
+    volumeSlider.addEventListener('input', function() {
+      audio.volume = volumeSlider.value;
+    });
+  }
+
+  // Init
+  renderPlaylist();
+  loadSong(0);
+  isPlaying = false;
+  if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+
+})();
+
+/* ═══════════════════════════════════════════════════
    SERVICE WORKER — Lucky Ubaidillah Portfolio
    Cache-first strategy for offline support
    ═══════════════════════════════════════════════════ */
@@ -738,3 +912,5 @@ self.addEventListener('fetch', function (event) {
     // ── Init
     render();
   })();
+
+  
