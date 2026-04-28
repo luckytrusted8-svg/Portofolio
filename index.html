@@ -785,6 +785,7 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+import { serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 import { 
   getFirestore, collection, addDoc, query, orderBy, onSnapshot 
 } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
@@ -834,7 +835,7 @@ window.cnSendMessage = async function () {
     name,
     email,
     message,
-    createdAt: new Date()
+    createdAt: serverTimestamp()
   });
 
   alert("Pesan berhasil dikirim!");
