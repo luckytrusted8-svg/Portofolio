@@ -4,44 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 — Halaman Tidak Ditemukan | Lucky Ubaidillah</title>
-  <link rel="icon" type="image/png" href="image/logo-lu.jpeg" />
+  <meta name="description" content="Halaman tidak ditemukan — Lucky Ubaidillah Portfolio" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Lucky.U" />
+
+  <link rel="icon" type="image/png" href="image/Profile/logo-lu.jpeg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <script>
-    (function(){
-      var t=localStorage.getItem('lu-theme');
-      if(!t) t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';
-      document.documentElement.setAttribute('data-theme',t);
+    (function () {
+      var t = localStorage.getItem('lu-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
     })();
   </script>
+
   <style>
+    /* ═══════════════════════════════════════════
+       404 — HALAMAN TIDAK DITEMUKAN
+       ═══════════════════════════════════════════ */
+
+    /* ── Variables ── */
     :root {
-      --bg: #0a0a0f;
-      --bg2: #0f0f18;
-      --surface: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --border2: rgba(255,255,255,0.14);
-      --accent: #5b8dee;
-      --accent2: #7aa3f5;
-      --accent-glow: rgba(91,141,238,0.25);
-      --text: #f0f0f5;
-      --text2: #a0a0b0;
-      --text3: #606070;
-    }
-    html[data-theme="light"] {
-      --bg:      #f2f2fa;
-      --bg2:     #e8e8f5;
-      --surface: rgba(0,0,0,0.04);
-      --border:  rgba(0,0,0,0.09);
-      --border2: rgba(0,0,0,0.15);
-      --accent:  #4a7de8;
-      --text:    #14142a;
-      --text2:   #44446a;
-      --text3:   #8888aa;
+      --bg:        #0a0a0f;
+      --bg2:       #0f0f18;
+      --surface:   rgba(255, 255, 255, 0.04);
+      --border:    rgba(255, 255, 255, 0.08);
+      --border2:   rgba(255, 255, 255, 0.14);
+      --accent:    #5b8dee;
+      --accent2:   #7aa3f5;
+      --accent-glow: rgba(91, 141, 238, 0.25);
+      --text:      #f0f0f5;
+      --text2:     #a0a0b0;
+      --text3:     #606070;
     }
 
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
+    html[data-theme="light"] {
+      --bg:        #f2f2fa;
+      --bg2:       #e8e8f5;
+      --surface:   rgba(0, 0, 0, 0.04);
+      --border:    rgba(0, 0, 0, 0.09);
+      --border2:   rgba(0, 0, 0, 0.15);
+      --accent:    #4a7de8;
+      --text:      #14142a;
+      --text2:     #44446a;
+      --text3:     #8888aa;
+    }
+
+    /* ── Base ── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -54,30 +85,53 @@
       position: relative;
     }
 
-    /* Background effects */
+    /* ── Background Effects ── */
     .bg-blob {
       position: fixed;
       border-radius: 50%;
       filter: blur(100px);
-      opacity: .15;
+      opacity: 0.15;
       pointer-events: none;
       animation: pulse 8s ease-in-out infinite alternate;
     }
-    .bg-blob-1 { width:500px; height:500px; background:radial-gradient(circle,#5b8dee,transparent 70%); top:-150px; right:-100px; }
-    .bg-blob-2 { width:350px; height:350px; background:radial-gradient(circle,#a78bfa,transparent 70%); bottom:-100px; left:-80px; animation-delay:-4s; }
-    @keyframes pulse { 0%{transform:scale(1)} 100%{transform:scale(1.2) translate(20px,-20px)} }
+
+    .bg-blob-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #5b8dee, transparent 70%);
+      top: -150px;
+      right: -100px;
+    }
+
+    .bg-blob-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #a78bfa, transparent 70%);
+      bottom: -100px;
+      left: -80px;
+      animation-delay: -4s;
+    }
+
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.2) translate(20px, -20px); }
+    }
 
     .grid {
-      position: fixed; inset:0;
-      background-image: linear-gradient(rgba(91,141,238,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(91,141,238,.03) 1px,transparent 1px);
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(91, 141, 238, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 141, 238, 0.03) 1px, transparent 1px);
       background-size: 60px 60px;
       pointer-events: none;
     }
 
-    /* Main content */
+    /* ── Main Content ── */
     .container {
       text-align: center;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       padding: 40px 24px;
       max-width: 520px;
     }
@@ -86,7 +140,7 @@
       font-family: 'Syne', sans-serif;
       font-size: clamp(6rem, 20vw, 10rem);
       font-weight: 800;
-      letter-spacing: -.06em;
+      letter-spacing: -0.06em;
       line-height: 1;
       background: linear-gradient(135deg, var(--accent), #a78bfa);
       -webkit-background-clip: text;
@@ -95,8 +149,9 @@
       margin-bottom: 8px;
       animation: floatNum 3s ease-in-out infinite;
     }
+
     @keyframes floatNum {
-      0%,100% { transform: translateY(0); }
+      0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-12px); }
     }
 
@@ -107,13 +162,16 @@
       display: inline-block;
       color: var(--accent);
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
     h1 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(1.4rem, 4vw, 2rem);
       font-weight: 700;
-      letter-spacing: -.03em;
+      letter-spacing: -0.03em;
       color: var(--text);
       margin-bottom: 12px;
     }
@@ -125,32 +183,62 @@
       margin-bottom: 36px;
     }
 
-    .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+    /* ── Buttons ── */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
 
     .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 13px 28px;
-      background: var(--accent); color: #fff;
-      border-radius: 50px; font-weight: 600; font-size: 14px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
       text-decoration: none;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px var(--accent-glow); }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow);
+    }
 
     .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 13px 28px;
-      border: 1.5px solid var(--border2); color: var(--text2);
-      border-radius: 50px; font-weight: 500; font-size: 14px;
+      border: 1.5px solid var(--border2);
+      color: var(--text2);
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 14px;
       text-decoration: none;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
     }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    /* Quick links */
-    .quick-links {
-      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
+
+    /* ── Quick Links ── */
+    .quick-links {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .quick-link {
       padding: 6px 14px;
       background: var(--surface);
@@ -159,46 +247,70 @@
       font-size: 12px;
       color: var(--text3);
       text-decoration: none;
-      transition: all .25s;
+      transition: all 0.25s ease;
     }
-    .quick-link:hover { color: var(--accent); border-color: var(--accent); background: rgba(91,141,238,.07); }
 
-    /* Brand */
-    .brand {
-      position: fixed; top: 24px; left: 40px;
-      font-family: 'Syne', sans-serif;
-      font-size: 1.2rem; font-weight: 800;
-      color: var(--text); text-decoration: none;
-      letter-spacing: -.03em;
+    .quick-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(91, 141, 238, 0.07);
     }
-    .brand span { color: var(--accent); }
+
+    /* ── Brand ── */
+    .brand {
+      position: fixed;
+      top: 24px;
+      left: 40px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
   </style>
 </head>
+
 <body>
+  <!-- Background Effects -->
   <div class="bg-blob bg-blob-1"></div>
   <div class="bg-blob bg-blob-2"></div>
   <div class="grid"></div>
 
+  <!-- Brand -->
   <a href="index.html" class="brand">Lucky<span>.U</span></a>
 
+  <!-- Main Content -->
   <div class="container">
     <div class="error-num">404</div>
     <i class="fas fa-compass-drafting error-icon"></i>
     <h1>Halaman Tidak Ditemukan</h1>
-    <p>Sepertinya halaman yang kamu cari tidak ada atau sudah dipindahkan. Mungkin ada typo di URL? Tidak masalah, kita bisa kembali ke jalur yang benar!</p>
+    <p>
+      Sepertinya halaman yang kamu cari tidak ada atau sudah dipindahkan.
+      Mungkin ada typo di URL? Tidak masalah, kita bisa kembali ke jalur yang benar!
+    </p>
 
     <div class="btn-group">
-      <a href="index.html" class="btn-primary"><i class="fas fa-house"></i> Kembali ke Home</a>
-      <a href="javascript:history.back()" class="btn-ghost"><i class="fas fa-arrow-left"></i> Halaman Sebelumnya</a>
+      <a href="index.html" class="btn-primary">
+        <i class="fas fa-house"></i> Kembali ke Home
+      </a>
+      <a href="javascript:history.back()" class="btn-ghost">
+        <i class="fas fa-arrow-left"></i> Halaman Sebelumnya
+      </a>
     </div>
 
     <div class="quick-links">
-      <a href="index.html#about"    class="quick-link">About</a>
-      <a href="index.html#skills"   class="quick-link">Skills</a>
-      <a href="index.html#projects" class="quick-link">Projects</a>
-      <a href="index.html#blog"     class="quick-link">Blog</a>
-      <a href="index.html#contact"  class="quick-link">Contact</a>
+      <a href="index.html#about"      class="quick-link">About</a>
+      <a href="index.html#skills"     class="quick-link">Skills</a>
+      <a href="index.html#projects"  class="quick-link">Projects</a>
+      <a href="index.html#collection" class="quick-link">Design</a>
+      <a href="index.html#contact"   class="quick-link">Contact</a>
     </div>
   </div>
 </body>
 </html>
+

@@ -520,50 +520,119 @@ function copyEmail() {
 })();
 
 /* ═══════════════════════════════════════════════════
-   MUSIC PLAYER — Playlist & Controls
-   Ganti lagu sesukamu di array `songs` di bawah ini!
+   MUSIC PLAYER — Spotify-like Playlist & Controls
+   Edit array `songs` below to add/remove tracks!
    ═══════════════════════════════════════════════════ */
 
 (function () {
   'use strict';
 
-  /* ── GANTI LAGU DI SINI ── */
+  /* ── EDIT LAGU DI SINI ── */
   var songs = [
     {
       title: 'Locked Out Of Heaven',
       artist: 'Bruno Mars',
       src: 'audio/Bruno Mars - Locked Out Of Heaven.mp3',
+      cover: 'image/AlbumPlaylist/BrunoMars.jpg',
       duration: '3:53'
     },
     {
       title: 'Perfect',
       artist: 'One Direction',
       src: 'audio/One Direction - Perfect.mp3',
+      cover: 'image/AlbumPlaylist/OneDirection.jpg',
       duration: '3:50'
-    }
-    // Tambah lagu baru di bawah sini:
-    // { title: 'Judul', artist: 'Artis', src: 'audio/file.mp3', duration: '3:00' },
+    },
+    {
+      title: 'Strong',
+      artist: 'One Direction',
+      src: 'audio/One Direction - Strong (Audio) [9JiW1UrLiBo].mp3',
+      cover: 'image/AlbumPlaylist/Strong.jpg',
+      duration: '3:20'
+    },
+    {
+      title: 'Story Of My Life',
+      artist: 'One Direction',
+      src: 'audio/One Direction - Story of My Life [W-TE_Ys4iwM].mp3',
+      cover: 'image/AlbumPlaylist/StoryOfMyLife.jpg',
+      duration: '4:07'
+    },
+    {
+      title: 'Treat You Better',
+      artist: 'Shawn Mendes',
+      src: 'audio/Shawn Mendes - Treat You Better [lY2yjAdbvdQ].mp3',
+      cover: 'image/AlbumPlaylist/TreatYouBetter.jpg',
+      duration: '4:16'
+    },
+    {
+      title: 'Focus On Myself',
+      artist: 'DEV',
+      src: 'audio/DEV - Focus On Myself (Official Audio) [u0jm2l3He3A].mp3',
+      cover: 'image/AlbumPlaylist/FocusOnMyself.jpg',
+      duration: '3:35'
+    },
+    {
+      title: 'Right Now',
+      artist: 'One Direction',
+      src: 'audio/One Direction - Right Now (Audio) [96C7zX178-s].mp3',
+      cover: 'image/AlbumPlaylist/OneDirection.jpg',
+      duration: '3:21'
+    },
+    {
+      title: 'December',
+      artist: 'Neck Deep',
+      src: 'audio/Neck Deep - December [8NnQs3EtoqU].mp3',
+      cover: 'image/AlbumPlaylist/NeckDeep.jpg',
+      duration: '3:21'
+    },
+    {
+      title: 'One Call Away',
+      artist: 'Charlie Puth',
+      src: 'audio/Charlie Puth - One Call Away [Official Video] [BxuY9FET9Y4].mp3',
+      cover: 'image/AlbumPlaylist/CharliePuth.jpg',
+      duration: '4:01'
+    },
+    {
+      title: 'Just The Way You Are',
+      artist: 'Bruno Mars',
+      src: 'audio/Bruno Mars - Just The Way You Are (Lyrics) [u7XjPmN-tHw].mp3',
+      cover: 'image/AlbumPlaylist/BrunoMars2.jpg',
+      duration: '3:40'
+    },
+
   ];
 
-  var audio        = document.getElementById('audioPlayer');
-  var playBtn      = document.getElementById('musicPlay');
-  var prevBtn      = document.getElementById('musicPrev');
-  var nextBtn      = document.getElementById('musicNext');
-  var progressBar  = document.getElementById('musicProgressBar');
-  var progressFill = document.getElementById('musicProgressFill');
-  var progressHandle = document.getElementById('musicProgressHandle');
-  var currentTimeEl = document.getElementById('musicCurrentTime');
-  var totalTimeEl   = document.getElementById('musicTotalTime');
-  var volumeSlider  = document.getElementById('musicVolume');
-  var disc          = document.getElementById('albumDisc');
-  var songTitle     = document.getElementById('musicTitle');
-  var songArtist    = document.getElementById('musicArtist');
-  var playlistEl    = document.getElementById('playlist');
+  var audio          = document.getElementById('audioPlayer');
+  var playBtn        = document.getElementById('playBtn');
+  var prevBtn        = document.getElementById('prevBtn');
+  var nextBtn        = document.getElementById('nextBtn');
+  var shuffleBtn     = document.getElementById('shuffleBtn');
+  var repeatBtn      = document.getElementById('repeatBtn');
+  var progressBar    = document.getElementById('progressBar');
+  var progressFill   = document.getElementById('progressFill');
+  var progressHandle = document.getElementById('progressHandle');
+  var currentTimeEl  = document.getElementById('currentTime');
+  var totalTimeEl    = document.getElementById('totalTime');
+  var volumeSlider   = document.getElementById('volumeSlider');
+  var disc           = document.getElementById('albumDisc');
+  var albumImg       = document.getElementById('albumImg');
+  var songTitle      = document.getElementById('musicTitle');
+  var songArtist     = document.getElementById('musicArtist');
+  var playlistEl     = document.getElementById('playlist');
+  var playlistCount  = document.getElementById('playlistCount');
 
   if (!audio) return; // Section tidak ada di halaman
 
   var currentIndex = 0;
   var isPlaying    = false;
+  var isShuffle    = false;
+  var repeatMode   = 0; // 0 = none, 1 = all, 2 = one
+
+  function formatTime(seconds) {
+    var m = Math.floor(seconds / 60);
+    var s = Math.floor(seconds % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
 
   function loadSong(index) {
     currentIndex = index;
@@ -571,6 +640,7 @@ function copyEmail() {
     audio.src = s.src;
     if (songTitle)  songTitle.textContent  = s.title;
     if (songArtist) songArtist.textContent = s.artist;
+    if (albumImg)   albumImg.src = s.cover || '';
     if (totalTimeEl) totalTimeEl.textContent = s.duration || '--:--';
     renderPlaylist();
     if (isPlaying) {
@@ -595,17 +665,83 @@ function copyEmail() {
   }
 
   function nextSong() {
-    currentIndex = (currentIndex + 1) % songs.length;
+    if (isShuffle) {
+      var nextIndex;
+      do { nextIndex = Math.floor(Math.random() * songs.length); }
+      while (nextIndex === currentIndex && songs.length > 1);
+      currentIndex = nextIndex;
+    } else {
+      currentIndex = (currentIndex + 1) % songs.length;
+    }
     loadSong(currentIndex);
     isPlaying = true;
     if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
   }
 
   function prevSong() {
-    currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+    if (audio.currentTime > 3) {
+      audio.currentTime = 0;
+      updateProgress();
+      return;
+    }
+    if (isShuffle) {
+      var prevIdx;
+      do { prevIdx = Math.floor(Math.random() * songs.length); }
+      while (prevIdx === currentIndex && songs.length > 1);
+      currentIndex = prevIdx;
+    } else {
+      currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+    }
     loadSong(currentIndex);
     isPlaying = true;
     if (playBtn) { playBtn.innerHTML = '<i class="fas fa-pause"></i>'; }
+  }
+
+  function toggleShuffle() {
+    isShuffle = !isShuffle;
+    if (shuffleBtn) {
+      shuffleBtn.classList.toggle('active', isShuffle);
+      shuffleBtn.style.color = isShuffle ? 'var(--accent)' : '';
+    }
+  }
+
+  function toggleRepeat() {
+    repeatMode = (repeatMode + 1) % 3;
+    if (repeatBtn) {
+      if (repeatMode === 0) {
+        repeatBtn.classList.remove('active');
+        repeatBtn.style.color = '';
+        repeatBtn.innerHTML = '<i class="fas fa-redo"></i>';
+        repeatBtn.title = 'Repeat: Off';
+      } else if (repeatMode === 1) {
+        repeatBtn.classList.add('active');
+        repeatBtn.style.color = 'var(--accent)';
+        repeatBtn.innerHTML = '<i class="fas fa-redo"></i>';
+        repeatBtn.title = 'Repeat: All';
+      } else {
+        repeatBtn.classList.add('active');
+        repeatBtn.style.color = 'var(--accent)';
+        repeatBtn.innerHTML = '<i class="fas fa-redo-alt"></i>';
+        repeatBtn.title = 'Repeat: One';
+      }
+    }
+  }
+
+  function onEnded() {
+    if (repeatMode === 2) {
+      audio.currentTime = 0;
+      audio.play().catch(function(){});
+    } else if (repeatMode === 1) {
+      nextSong();
+    } else {
+      if (currentIndex < songs.length - 1 || isShuffle) {
+        nextSong();
+      } else {
+        isPlaying = false;
+        if (playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        if (disc) disc.classList.remove('spin');
+      }
+    }
   }
 
   function updateProgress() {
@@ -613,11 +749,8 @@ function copyEmail() {
     var pct = (audio.currentTime / audio.duration) * 100;
     if (progressFill) progressFill.style.width = pct + '%';
     if (progressHandle) progressHandle.style.left = pct + '%';
-    if (currentTimeEl) {
-      var m = Math.floor(audio.currentTime / 60);
-      var sec = Math.floor(audio.currentTime % 60);
-      currentTimeEl.textContent = m + ':' + (sec < 10 ? '0' : '') + sec;
-    }
+    if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+    if (totalTimeEl && audio.duration) totalTimeEl.textContent = formatTime(audio.duration);
   }
 
   function seek(e) {
@@ -651,15 +784,20 @@ function copyEmail() {
         if (disc) disc.classList.add('spin');
       });
     });
+
+    if (playlistCount) playlistCount.textContent = songs.length + ' lagu';
   }
 
   // Events
-  if (playBtn) playBtn.addEventListener('click', togglePlay);
-  if (prevBtn) prevBtn.addEventListener('click', prevSong);
-  if (nextBtn) nextBtn.addEventListener('click', nextSong);
+  if (playBtn)    playBtn.addEventListener('click', togglePlay);
+  if (prevBtn)    prevBtn.addEventListener('click', prevSong);
+  if (nextBtn)    nextBtn.addEventListener('click', nextSong);
+  if (shuffleBtn) shuffleBtn.addEventListener('click', toggleShuffle);
+  if (repeatBtn)  repeatBtn.addEventListener('click', toggleRepeat);
   if (audio) {
     audio.addEventListener('timeupdate', updateProgress);
-    audio.addEventListener('ended', nextSong);
+    audio.addEventListener('ended', onEnded);
+    audio.addEventListener('loadedmetadata', updateProgress);
   }
   if (progressBar) {
     progressBar.addEventListener('click', seek);
