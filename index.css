@@ -2929,3 +2929,128 @@ html[data-theme="light"] .cn-toast { background: rgba(255,255,255,0.97); box-sha
   .cn-socials-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* =========================
+   COMMENT WRAPPER
+========================= */
+.cn-comments-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* SCROLLBAR */
+.cn-comments-list::-webkit-scrollbar {
+  width: 5px;
+}
+.cn-comments-list::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}
+
+/* =========================
+   COMMENT CARD
+========================= */
+.cn-comment-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.015)
+  );
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+
+  backdrop-filter: blur(12px);
+
+  transition: all 0.25s ease;
+  animation: fadeInUp 0.4s ease;
+}
+
+.cn-comment-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79,140,255,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   AVATAR
+========================= */
+.cn-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid rgba(79,140,255,0.6);
+  box-shadow: 0 0 10px rgba(79,140,255,0.3);
+
+  flex-shrink: 0;
+}
+
+/* =========================
+   CONTENT
+========================= */
+.cn-comment-content {
+  flex: 1;
+}
+
+/* HEADER */
+.cn-comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cn-comment-content strong {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* TIME */
+.cn-time {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* TEXT */
+.cn-comment-content p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  margin-top: 4px;
+  word-break: break-word;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty-comment {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.5;
+  padding: 12px;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
