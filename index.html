@@ -784,141 +784,151 @@
   </div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
-import { serverTimestamp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
-import { 
-  getFirestore, collection, addDoc, query, orderBy, onSnapshot 
-} from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+  // Import Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+  import { 
+    getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp 
+  } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-// 🔥 CONFIG LU
-const firebaseConfig = {
-  apiKey: "AIzaSyBL3DtvkAs_lnFafhQtgZOhNbcPMJGriGw",
-  authDomain: "portfolio-lucky.firebaseapp.com",
-  projectId: "portfolio-lucky",
-  storageBucket: "portfolio-lucky.firebasestorage.app",
-  messagingSenderId: "610014577390",
-  appId: "1:610014577390:web:f8a1ee45fea12daeca29ff",
-  measurementId: "G-EW0Q0VJ64S"
-};
+  // 🔥 CONFIG TERBARU (SINKRON DENGAN PROJECT ID: 494813)
+  const firebaseConfig = {
+    apiKey: "AIzaSyC6bUzXFFy0bSUoFFZ265XKjTO9g-RRq6Y",
+    authDomain: "portfolio-lucky-494813.firebaseapp.com",
+    projectId: "portfolio-lucky-494813",
+    storageBucket: "portfolio-lucky-494813.firebasestorage.app",
+    messagingSenderId: "134827996213",
+    appId: "1:134827996213:web:2af971a19a7f1bbb1cad7c",
+    measurementId: "G-G5GBWLZN8V"
+  };
 
-// 🔥 INIT
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+  // 🔥 INITIALIZE
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
 
-// =============================
-// 🔧 HELPER BASE64
-// =============================
-function toBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-  });
-}
-
-// =============================
-// 📩 KIRIM PESAN
-// =============================
-window.cnSendMessage = async function () {
-  const name = document.getElementById("cn-name").value;
-  const email = document.getElementById("cn-email").value;
-  const message = document.getElementById("cn-message").value;
-
-  if (!name || !email || !message) {
-    alert("Isi semua field!");
-    return;
+  // =============================
+  // 🔧 HELPER BASE64 (Untuk Upload Foto)
+  // =============================
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
   }
 
-  await addDoc(collection(db, "messages"), {
-    name,
-    email,
-    message,
-    createdAt: serverTimestamp()
-  });
+  // =============================
+  // 📩 KIRIM PESAN (Contact Form)
+  // =============================
+  window.cnSendMessage = async function () {
+    const name = document.getElementById("cn-name").value;
+    const email = document.getElementById("cn-email").value;
+    const message = document.getElementById("cn-message").value;
 
-  alert("Pesan berhasil dikirim!");
-
-  document.getElementById("cn-name").value = "";
-  document.getElementById("cn-email").value = "";
-  document.getElementById("cn-message").value = "";
-};
-
-// =============================
-// 💬 POST COMMENT
-// =============================
-window.cnPostComment = async function () {
-  const name = document.getElementById("cn-cname").value;
-  const message = document.getElementById("cn-cmessage").value;
-  const fileInput = document.getElementById("cnPhotoUpload");
-
-  if (!name || !message) {
-    alert("Isi nama & pesan!");
-    return;
-  }
-
-  let photoBase64 = "";
-
-  if (fileInput.files[0]) {
-    const file = fileInput.files[0];
-
-    if (file.size > 2 * 1024 * 1024) {
-      alert("Foto max 2MB!");
+    if (!name || !email || !message) {
+      alert("Isi semua field!");
       return;
     }
 
-    photoBase64 = await toBase64(file);
+    try {
+      await addDoc(collection(db, "messages"), {
+        name,
+        email,
+        message,
+        createdAt: serverTimestamp()
+      });
+      alert("Pesan berhasil dikirim!");
+      
+      // Reset Form
+      document.getElementById("cn-name").value = "";
+      document.getElementById("cn-email").value = "";
+      document.getElementById("cn-message").value = "";
+    } catch (e) {
+      console.error("Error sending message: ", e);
+      alert("Gagal mengirim pesan. Pastikan Firestore sudah diaktifkan!");
+    }
+  };
+
+  // =============================
+  // 💬 POST COMMENT (Komentar Pengunjung)
+  // =============================
+  window.cnPostComment = async function () {
+    const name = document.getElementById("cn-cname").value;
+    const message = document.getElementById("cn-cmessage").value;
+    const fileInput = document.getElementById("cnPhotoUpload");
+
+    if (!name || !message) {
+      alert("Isi nama & pesan!");
+      return;
+    }
+
+    let photoBase64 = "";
+
+    if (fileInput.files[0]) {
+      const file = fileInput.files[0];
+      if (file.size > 2 * 1024 * 1024) {
+        alert("Foto max 2MB!");
+        return;
+      }
+      photoBase64 = await toBase64(file);
+    }
+
+    try {
+      await addDoc(collection(db, "comments"), {
+        name,
+        message,
+        photo: photoBase64,
+        createdAt: serverTimestamp() // Menggunakan serverTimestamp agar lebih akurat
+      });
+
+      // Reset Form
+      document.getElementById("cn-cname").value = "";
+      document.getElementById("cn-cmessage").value = "";
+      fileInput.value = "";
+    } catch (e) {
+      console.error("Error posting comment: ", e);
+    }
+  };
+
+  // =============================
+  // 🔥 REALTIME COMMENTS (Tampilan Komentar)
+  // =============================
+  function loadCommentsRealtime() {
+    const list = document.getElementById("cnCommentsList");
+    if (!list) return;
+
+    const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
+
+    onSnapshot(q, (snapshot) => {
+      list.innerHTML = "";
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const photo = data.photo || `https://ui-avatars.com/api/?name=${data.name}`;
+
+        list.innerHTML += `
+          <div class="cn-comment-item">
+            <img src="${photo}" class="cn-avatar" alt="avatar"/>
+            <div class="cn-comment-content">
+              <strong>${data.name}</strong>
+              <p>${data.message}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      const countLabel = document.getElementById("cnCommentCount");
+      if (countLabel) countLabel.innerText = snapshot.size;
+    }, (error) => {
+      console.error("Firestore Listen Error: ", error);
+    });
   }
 
-  await addDoc(collection(db, "comments"), {
-    name,
-    message,
-    photo: photoBase64,
-    createdAt: new Date()
-  });
-
-  // reset
-  document.getElementById("cn-cname").value = "";
-  document.getElementById("cn-cmessage").value = "";
-  fileInput.value = "";
-};
-
-// =============================
-// 🔥 REALTIME COMMENTS
-// =============================
-function loadCommentsRealtime() {
-  const list = document.getElementById("cnCommentsList");
-
-  const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
-
-  onSnapshot(q, (snapshot) => {
-    list.innerHTML = "";
-
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-
-      const photo = data.photo || `https://ui-avatars.com/api/?name=${data.name}`;
-
-      list.innerHTML += `
-        <div class="cn-comment-item">
-          <img src="${photo}" class="cn-avatar"/>
-          <div class="cn-comment-content">
-            <strong>${data.name}</strong>
-            <p>${data.message}</p>
-          </div>
-        </div>
-      `;
-    });
-
-    document.getElementById("cnCommentCount").innerText = snapshot.size;
-  });
-}
-
-// 🔥 AUTO RUN
-loadCommentsRealtime();
+  // Jalankan fungsi realtime
+  loadCommentsRealtime();
 </script>
-  
+
 </body>
 </html>
