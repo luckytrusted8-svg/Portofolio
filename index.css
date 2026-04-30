@@ -2930,13 +2930,13 @@ html[data-theme="light"] .cn-toast { background: rgba(255,255,255,0.97); box-sha
 }
 
 /* =========================
-   COMMENT WRAPPER
+   COMMENT WRAPPER (Updated)
 ========================= */
-.cn-comments-list {
-  margin-top: 15px;
+.cn-comments-list, #cnCommentsList {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   max-height: 320px;
   overflow-y: auto;
   padding-right: 6px;
@@ -2952,82 +2952,77 @@ html[data-theme="light"] .cn-toast { background: rgba(255,255,255,0.97); box-sha
 }
 
 /* =========================
-   COMMENT CARD
+   COMMENT CARD (Updated)
 ========================= */
 .cn-comment-item {
   display: flex;
-  gap: 14px;
-  padding: 14px;
+  gap: 12px;
+  padding: 12px;
+  
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
 
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.04),
-    rgba(255,255,255,0.015)
-  );
-
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
-
-  backdrop-filter: blur(12px);
-
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
   animation: fadeInUp 0.4s ease;
 }
 
 .cn-comment-item:hover {
-  transform: translateY(-3px);
-  border-color: rgba(79,140,255,0.4);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  background: var(--surface2);
+  border-color: rgba(91,141,238,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
 /* =========================
-   AVATAR
+   AVATAR (Updated)
 ========================= */
 .cn-avatar {
-  width: 44px;
-  height: 44px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   object-fit: cover;
-
-  border: 2px solid rgba(79,140,255,0.6);
-  box-shadow: 0 0 10px rgba(79,140,255,0.3);
+  
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 
   flex-shrink: 0;
 }
 
 /* =========================
-   CONTENT
+   CONTENT (Updated)
 ========================= */
 .cn-comment-content {
-  flex: 1;
+  flex-grow: 1;
 }
 
 /* HEADER */
 .cn-comment-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
 }
 
-.cn-comment-content strong {
-  font-size: 14px;
-  color: #fff;
-  font-weight: 600;
+.cn-comment-name, .cn-comment-content strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 /* TIME */
-.cn-time {
-  font-size: 11px;
-  color: rgba(255,255,255,0.4);
+.cn-comment-time, .cn-time {
+  font-size: 0.75rem;
+  color: var(--text3);
 }
 
 /* TEXT */
-.cn-comment-content p {
-  font-size: 13px;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.5;
-  margin-top: 4px;
+.cn-comment-message, .cn-comment-content p {
+  font-size: 0.9rem;
+  color: var(--text2);
+  line-height: 1.4;
+  margin: 0;
   word-break: break-word;
 }
 
@@ -3039,18 +3034,70 @@ html[data-theme="light"] .cn-toast { background: rgba(255,255,255,0.97); box-sha
   font-size: 13px;
   opacity: 0.5;
   padding: 12px;
+  color: var(--text3);
+
+/* Container Utama List Komentar */
+#cnCommentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
 }
 
-/* =========================
-   ANIMATION
-========================= */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Item Komentar */
+.cn-comment-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
 }
+
+.cn-comment-item:hover {
+    background: #f1f1f1;
+}
+
+/* Avatar Pengunjung */
+.cn-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0; /* Agar foto tidak gepeng */
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Isi Konten Komentar */
+.cn-comment-content {
+    flex-grow: 1;
+}
+
+/* Baris Nama & Waktu */
+.cn-comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.cn-comment-name {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.cn-comment-time {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* Teks Pesan */
+.cn-comment-message {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.4;
+    margin: 0;
+} }

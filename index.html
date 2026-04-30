@@ -791,7 +791,7 @@
     getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp 
   } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
-  // 🔥 CONFIG TERBARU (SINKRON DENGAN PROJECT ID: 494813)
+  // 🔥 CONFIG
   const firebaseConfig = {
     apiKey: "AIzaSyC6bUzXFFy0bSUoFFZ265XKjTO9g-RRq6Y",
     authDomain: "portfolio-lucky-494813.firebaseapp.com",
@@ -802,14 +802,9 @@
     measurementId: "G-G5GBWLZN8V"
   };
 
-  // 🔥 INITIALIZE
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const db = getFirestore(app);
 
-  // =============================
-  // 🔧 HELPER BASE64 (Untuk Upload Foto)
-  // =============================
   function toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -819,41 +814,7 @@
     });
   }
 
-  // =============================
-  // 📩 KIRIM PESAN (Contact Form)
-  // =============================
-  window.cnSendMessage = async function () {
-    const name = document.getElementById("cn-name").value;
-    const email = document.getElementById("cn-email").value;
-    const message = document.getElementById("cn-message").value;
-
-    if (!name || !email || !message) {
-      alert("Isi semua field!");
-      return;
-    }
-
-    try {
-      await addDoc(collection(db, "messages"), {
-        name,
-        email,
-        message,
-        createdAt: serverTimestamp()
-      });
-      alert("Pesan berhasil dikirim!");
-      
-      // Reset Form
-      document.getElementById("cn-name").value = "";
-      document.getElementById("cn-email").value = "";
-      document.getElementById("cn-message").value = "";
-    } catch (e) {
-      console.error("Error sending message: ", e);
-      alert("Gagal mengirim pesan. Pastikan Firestore sudah diaktifkan!");
-    }
-  };
-
-  // =============================
-  // 💬 POST COMMENT (Komentar Pengunjung)
-  // =============================
+  // 💬 POST COMMENT
   window.cnPostComment = async function () {
     const name = document.getElementById("cn-cname").value;
     const message = document.getElementById("cn-cmessage").value;
@@ -865,7 +826,6 @@
     }
 
     let photoBase64 = "";
-
     if (fileInput.files[0]) {
       const file = fileInput.files[0];
       if (file.size > 2 * 1024 * 1024) {
@@ -880,10 +840,9 @@
         name,
         message,
         photo: photoBase64,
-        createdAt: serverTimestamp() // Menggunakan serverTimestamp agar lebih akurat
+        createdAt: serverTimestamp() // Mencatat waktu server
       });
 
-      // Reset Form
       document.getElementById("cn-cname").value = "";
       document.getElementById("cn-cmessage").value = "";
       fileInput.value = "";
@@ -892,13 +851,12 @@
     }
   };
 
-  // =============================
-  // 🔥 REALTIME COMMENTS (Tampilan Komentar)
-  // =============================
+  // 🔥 REALTIME COMMENTS (DIPERBARUI UNTUK MENAMPILKAN WAKTU)
   function loadCommentsRealtime() {
     const list = document.getElementById("cnCommentsList");
     if (!list) return;
 
+    // Mengurutkan berdasarkan waktu terbaru di atas
     const q = query(collection(db, "comments"), orderBy("createdAt", "desc"));
 
     onSnapshot(q, (snapshot) => {
@@ -907,13 +865,30 @@
       snapshot.forEach((doc) => {
         const data = doc.data();
         const photo = data.photo || `https://ui-avatars.com/api/?name=${data.name}`;
+        
+        // --- LOGIKA FORMATA WAKTU ---
+        let timeString = "..."; // Placeholder saat waktu sedang diproses server
+        if (data.createdAt) {
+          const date = data.createdAt.toDate();
+          timeString = date.toLocaleString("id-ID", { 
+            day: "numeric", 
+            month: "short", 
+            year: "numeric", 
+            hour: "2-digit", 
+            minute: "2-digit" 
+          });
+        }
+        // ----------------------------
 
-        list.innerHTML += `
+list.innerHTML += `
           <div class="cn-comment-item">
-            <img src="${photo}" class="cn-avatar" alt="avatar"/>
+            <img src="${photo}" class="cn-avatar" alt="avatar" />
             <div class="cn-comment-content">
-              <strong>${data.name}</strong>
-              <p>${data.message}</p>
+              <div class="cn-comment-header">
+                <span class="cn-comment-name">${data.name}</span>
+                <span class="cn-comment-time">${timeString}</span>
+              </div>
+              <p class="cn-comment-message">${data.message}</p>
             </div>
           </div>
         `;
@@ -926,7 +901,6 @@
     });
   }
 
-  // Jalankan fungsi realtime
   loadCommentsRealtime();
 </script>
 
