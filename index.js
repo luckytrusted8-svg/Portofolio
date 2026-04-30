@@ -599,6 +599,13 @@ function copyEmail() {
       cover: 'image/AlbumPlaylist/BrunoMars2.jpg',
       duration: '3:40'
     },
+    {
+      title: 'Love Me Not',
+      artist: 'Ravyn Lenae',
+      src: 'audio/Ravyn Lenae - Love Me Not [-7AfRAU69d8].mp3',
+      cover: 'image/AlbumPlaylist/LoveMeNot.jpg',
+      duration: '3:33'
+    },
 
   ];
 
