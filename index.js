@@ -1059,3 +1059,128 @@ self.addEventListener('fetch', function (event) {
   })();
 
   
+
+/* ═══════════════════════════════════════════════════════════
+   CERTIFICATE MODAL & FILTER
+   ═══════════════════════════════════════════════════════════ */
+
+// ── State
+let _certFront = '';
+let _certBack  = '';
+let _certTab   = 'front';
+
+// ── Open modal
+function openCertModal(card) {
+  const front    = card.dataset.front    || '';
+  const back     = card.dataset.back     || '';
+  const title    = card.dataset.title    || '';
+  const no       = card.dataset.no       || '';
+  const predikat = card.dataset.predikat || '';
+
+  _certFront = front;
+  _certBack  = back;
+  _certTab   = 'front';
+
+  // Populate
+  document.getElementById('certModalTitle').textContent    = title;
+  document.getElementById('certModalNo').textContent       = no;
+  document.getElementById('certModalPredikat').textContent = predikat;
+
+  // Show/hide "Daftar Kompetensi" tab based on whether back image exists
+  const backBtn = document.getElementById('cmt-back');
+  if (back) {
+    backBtn.classList.remove('hidden');
+  } else {
+    backBtn.classList.add('hidden');
+  }
+
+  // Default to front tab
+  setActiveTab('front');
+  loadCertImage(front);
+
+  // Open overlay
+  document.getElementById('certModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// ── Switch tab
+function switchCertTab(tab) {
+  _certTab = tab;
+  setActiveTab(tab);
+  if (tab === 'front') {
+    loadCertImage(_certFront);
+  } else {
+    loadCertImage(_certBack);
+  }
+}
+
+// ── Set active tab UI
+function setActiveTab(tab) {
+  document.getElementById('cmt-front').classList.toggle('active', tab === 'front');
+  document.getElementById('cmt-back').classList.toggle('active',  tab === 'back');
+}
+
+// ── Load image into modal with loading state
+function loadCertImage(src) {
+  const img     = document.getElementById('certModalImg');
+  const loading = document.getElementById('certModalLoading');
+
+  if (!src) return;
+
+  img.classList.add('loading');
+  loading.classList.remove('hide');
+
+  const tempImg = new Image();
+  tempImg.onload = () => {
+    img.src = src;
+    img.classList.remove('loading');
+    loading.classList.add('hide');
+  };
+  tempImg.onerror = () => {
+    img.src = src; // still set it, show broken
+    img.classList.remove('loading');
+    loading.classList.add('hide');
+  };
+  tempImg.src = src;
+}
+
+// ── Close modal (overlay click)
+function closeCertModal(e) {
+  if (e.target === document.getElementById('certModalOverlay')) {
+    _closeCertModal();
+  }
+}
+
+// ── Close modal (button)
+function closeCertModalBtn() {
+  _closeCertModal();
+}
+
+function _closeCertModal() {
+  document.getElementById('certModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── ESC key close
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') _closeCertModal();
+});
+
+// ── Certificate filter
+document.addEventListener('DOMContentLoaded', () => {
+  const filterBtns = document.querySelectorAll('.cert-filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.certitem').forEach(card => {
+        if (filter === 'all' || card.dataset.cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
