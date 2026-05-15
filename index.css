@@ -4084,3 +4084,649 @@ html[data-theme="light"] .cn-toast { background: rgba(255,255,255,0.97); box-sha
   .mobile-menu  { padding: 16px 20px 24px; }
   .mobile-link  { font-size: 14px; padding: 11px 0; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE FIX — Mobile Optimized (390px / 360px targets)
+   Covers: iPhone 12/13/14 (390px), Samsung Galaxy (360px),
+           iPhone SE (375px), iPhone 14 Plus (430px)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Global mobile container fix ── */
+@media (max-width: 480px) {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  .section-container {
+    padding: 56px 18px 48px;
+  }
+
+  /* Section headers */
+  .section-title {
+    font-size: clamp(1.6rem, 7.5vw, 2.2rem);
+    letter-spacing: -.03em;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: .12em;
+  }
+  .section-desc {
+    font-size: 13.5px;
+  }
+}
+
+/* ── 2. HERO SECTION ── */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 96px 20px 52px;
+    gap: 36px;
+    text-align: center;
+  }
+
+  /* Floating cards: reposition so they don't cause overflow */
+  .fc-1 { right: 0px; bottom: 8px; font-size: 11px; padding: 8px 12px; }
+  .fc-2 { left: 0px; top: 15px; font-size: 11px; padding: 8px 12px; }
+  .floating-card { gap: 6px; }
+  .floating-card span { font-size: 11px; }
+
+  /* Hero actions: always center on mobile */
+  .hero-actions {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .hero-typing {
+    text-align: center;
+  }
+
+  .hero-desc {
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 88px 18px 44px;
+    gap: 28px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  /* Hero actions: always centered, stays in row on normal phones */
+  .hero-actions {
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .btn-primary, .btn-ghost {
+    padding: 11px 20px;
+    font-size: 13px;
+  }
+
+  /* Profile image on mobile */
+  .hero-img-wrap, .hero-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Floating cards: hide on very small to prevent overflow */
+  .fc-1, .fc-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-content {
+    padding: 84px 16px 40px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 10.5vw, 2.4rem);
+  }
+
+  .hero-img-wrap, .hero-img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* ── 3. NAVBAR ── */
+@media (max-width: 480px) {
+  .nav-inner {
+    padding: 0 18px;
+  }
+
+  .nav-logo {
+    font-size: 1.15rem;
+  }
+
+  .mobile-menu {
+    padding: 14px 18px 20px;
+  }
+
+  .mobile-link {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
+
+/* ── 4. ABOUT / ABN SECTION ── */
+@media (max-width: 480px) {
+  .abn-top {
+    padding: 24px 16px;
+    gap: 24px;
+    border-radius: 16px;
+  }
+
+  .abn-heading {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .abn-sub {
+    font-size: 0.95rem;
+  }
+
+  .abn-text {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .abn-stats {
+    gap: 0;
+    border-radius: 12px;
+    padding: 14px 10px;
+    width: 100%;
+  }
+
+  .abn-stat-num {
+    font-size: 1.6rem;
+  }
+
+  .abn-stat-lbl {
+    font-size: 10px;
+  }
+
+  /* About grid: 2 kolom masih OK di 390px */
+  .abn-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .abn-col {
+    padding: 16px 14px;
+    border-radius: 14px;
+  }
+
+  .abn-col-header h4 {
+    font-size: 0.85rem;
+  }
+
+  .abn-list li {
+    font-size: 12.5px;
+    gap: 8px;
+  }
+
+  .abn-fun-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .abn-fun-item {
+    padding: 10px 8px;
+    font-size: 11px;
+  }
+
+  .abn-learning-tag {
+    font-size: 11.5px;
+    padding: 7px 12px;
+  }
+
+  .abn-photo-wrap {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Pada layar 360px (Samsung Galaxy), abn-grid jadi 1 kolom */
+  .abn-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 5. SKILLS / ABOUT CARDS ── */
+@media (max-width: 480px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .about-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .about-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+
+  .about-card ul li {
+    font-size: 12.5px;
+    gap: 7px;
+  }
+
+  .about-card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .skills-bar-wrap {
+    padding: 20px 16px;
+    border-radius: 16px;
+    gap: 14px;
+  }
+
+  .skill-bar-label span {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── 6. TIMELINE ── */
+@media (max-width: 480px) {
+  .timeline::before {
+    left: 16px;
+  }
+
+  .tl-item {
+    padding-left: 44px;
+  }
+
+  .tl-dot {
+    left: 16px !important;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .tl-content {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .tl-content h3 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .tl-role {
+    font-size: 12.5px;
+  }
+
+  .tl-list li {
+    font-size: 12.5px;
+    padding-left: 12px;
+  }
+
+  .tl-year {
+    font-size: 11px;
+  }
+
+  .tl-tag {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+}
+
+/* ── 7. DESIGN COLLECTION ── */
+@media (max-width: 480px) {
+  .design-layout {
+    gap: 24px;
+  }
+
+  .design-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .design-info {
+    text-align: center;
+    padding: 0 4px;
+  }
+
+  .design-info h2 {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .di-label {
+    text-align: center;
+  }
+
+  .di-desc {
+    font-size: 13.5px;
+    text-align: center;
+  }
+
+  .di-author {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+/* ── 8. PROJECTS ── */
+@media (max-width: 480px) {
+  .filter-wrap {
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 7px 13px;
+    font-size: 12px;
+  }
+
+  .pcard {
+    border-radius: 16px;
+  }
+
+  .pcard-preview {
+    height: 180px;
+  }
+
+  .pcard-body {
+    padding: 18px 16px 16px;
+  }
+
+  .pcard-top h3 {
+    font-size: 0.95rem;
+  }
+
+  .pcard-body p {
+    font-size: 13px;
+  }
+}
+
+/* ── 9. TOOLS GRID ── */
+@media (max-width: 480px) {
+  .tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .tool-item {
+    padding: 14px 8px;
+    border-radius: 12px;
+  }
+
+  .tool-item i {
+    font-size: 1.6rem;
+  }
+
+  .tool-item span {
+    font-size: 10.5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .tools-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── 10. TESTIMONIAL ── */
+@media (max-width: 480px) {
+  .testi-card {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .testi-text {
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .testi-author strong {
+    font-size: 13.5px;
+  }
+
+  .testi-author span {
+    font-size: 12px;
+  }
+}
+
+/* ── 11. CONTACT SECTION ── */
+@media (max-width: 480px) {
+  .cn-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .cn-card {
+    border-radius: 16px;
+  }
+
+  .cn-card-head {
+    padding: 18px 16px 0;
+  }
+
+  .cn-card-title {
+    font-size: 1.1rem;
+  }
+
+  .cn-form {
+    padding: 0 14px 18px;
+  }
+
+  .cn-input {
+    font-size: 14px;
+    padding: 12px 14px 12px 40px;
+  }
+
+  .cn-textarea {
+    min-height: 100px;
+  }
+
+  .cn-btn-send, .cn-btn-post {
+    font-size: 13.5px;
+    padding: 12px 22px;
+  }
+
+  .cn-socials-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .cn-social-item {
+    padding: 12px 10px;
+    border-radius: 12px;
+  }
+
+  .cn-social-item strong {
+    font-size: 12.5px;
+  }
+
+  .cn-social-item span {
+    font-size: 11px;
+  }
+
+  .cn-linkedin {
+    padding: 14px 16px;
+    border-radius: 14px;
+  }
+
+  .cn-comments-list {
+    max-height: 260px;
+  }
+
+  .cn-comment-form {
+    padding: 0 14px 14px;
+  }
+}
+
+/* ── 12. MARQUEE ── */
+@media (max-width: 480px) {
+  .marquee-strip {
+    padding: 14px 0;
+  }
+
+  .marquee-track span {
+    font-size: 12px;
+    margin: 0 10px;
+  }
+}
+
+/* ── 13. SCROLL DOWN ARROW ── */
+@media (max-width: 768px) {
+  .scroll-down {
+    display: none;
+  }
+}
+
+/* ── 14. BACK TO TOP ── */
+@media (max-width: 480px) {
+  .back-to-top {
+    width: 42px;
+    height: 42px;
+    bottom: 18px;
+    right: 16px;
+  }
+}
+
+/* ── 15. CERT SECTION EXTRA FIX ── */
+@media (max-width: 480px) {
+  .cert-stats {
+    padding: 14px 10px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .cert-filter-wrap {
+    gap: 6px;
+    margin-bottom: 20px;
+    padding: 0 2px;
+  }
+
+  .cert-filter-btn {
+    padding: 6px 11px;
+    font-size: 11px;
+    border-radius: 40px;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .cert-card-new {
+    border-radius: 14px;
+  }
+
+  .cert-body-new {
+    padding: 12px 14px 14px;
+  }
+
+  .cert-title-new {
+    font-size: 0.9rem;
+  }
+
+  /* Tampilkan overlay hint di mobile (no hover) */
+  .cert-img-overlay {
+    opacity: 1;
+    background: rgba(5, 5, 20, 0.18);
+  }
+
+  .cert-zoom-btn {
+    transform: scale(0.8);
+  }
+}
+
+/* ── 16. MODAL CERT ── */
+@media (max-width: 480px) {
+  .cert-modal-overlay {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .cert-modal {
+    border-radius: 20px 20px 16px 16px;
+    max-height: 88vh;
+  }
+
+  .cert-modal-close {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+  }
+
+  .cmt {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ── 17. OVERFLOW PREVENTION ── */
+@media (max-width: 768px) {
+  .hero,
+  .about-new,
+  .about,
+  .timeline-section,
+  .collection,
+  .projects,
+  .tools-section,
+  .cert-section,
+  .contact-new,
+  .footer-company {
+    overflow-x: hidden;
+  }
+}
+
+/* ── 18. SECTION CONTAINER PADDING OVERRIDE ── */
+@media (max-width: 360px) {
+  .section-container {
+    padding: 52px 14px 44px;
+  }
+
+  .hero-content {
+    padding: 80px 14px 40px;
+  }
+
+  .footer-container {
+    padding: 0 14px;
+  }
+
+  .abn-top {
+    padding: 20px 14px;
+  }
+}
