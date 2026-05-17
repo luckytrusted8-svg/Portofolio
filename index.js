@@ -34,10 +34,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── NAVBAR SCROLL ────────────────────────
+  // ── NAVBAR SCROLL & HIDE/SHOW ON SCROLL ────────────────────────
   const navbar = document.getElementById('navbar');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', () => {
+    // 1. Tambah background blur jika layar di-scroll melewati 40px
     navbar.classList.toggle('scrolled', window.scrollY > 40);
+    
+    // 2. Algoritma deteksi arah scroll atas/bawah
+    if (window.scrollY > lastScrollY && window.scrollY > 80) {
+      // Jika di-scroll ke bawah dan tidak sedang membuka menu mobile, sembunyikan navbar
+      if (!mobileMenu.classList.contains('open')) {
+        navbar.classList.add('nav-hidden');
+      }
+    } else {
+      // Jika di-scroll ke atas, munculkan navbar kembali
+      navbar.classList.remove('nav-hidden');
+    }
+    
+    lastScrollY = window.scrollY;
     updateActiveNav();
   });
 
@@ -54,17 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── MOBILE MENU ──────────────────────────
-  const burger     = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobileMenu');
+  // ── MOBILE MENU (CIRCULAR OVERLAY UPGRADE) ──────────────────────────
+  const burger = document.getElementById('burger');
+  
   burger.addEventListener('click', () => {
     burger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
+    
+    // Kunci scroll halaman web utama agar tidak bergerak saat menu fullscreen terbuka
+    if (mobileMenu.classList.contains('open')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   });
-  document.querySelectorAll('.mobile-link').forEach(l => {
+
+  // Tutup menu otomatis jika user menekan link navigasi internal mobile
+  document.querySelectorAll('.mobile-link, .mobile-cta-btn').forEach(l => {
     l.addEventListener('click', () => {
       burger.classList.remove('open');
       mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
     });
   });
 
